@@ -1,0 +1,46 @@
+"reference"=> $ref,
+                "merchant_ref"=> "px-1647721441",
+                "payment_selection_type"=> "static",
+                "payment_method"=> "ALFAMART",
+                "payment_name"=> "Alfamart",
+                "customer_name"=> "ET MOLESTIAE ALIQUID",
+                "customer_email"=> "kozoly@mailinator.com",
+                "customer_phone"=> null,
+                "callback_url"=> null,
+                "return_url"=> null,
+                "amount"=> 50000,
+                "fee_merchant"=> 0,
+                "fee_customer"=> 6000,
+                "total_fee"=> 6000,
+                "amount_received"=> 44000,
+                "pay_code"=> "748846166652751",
+                "pay_url"=> null,
+                "checkout_url"=> "https=>//tripay.co.id/checkout/DEV-T736839447YQOM8",
+                "status"=> "UNPAID",
+                "paid_at"=> null,
+                "expired_time"=> 1647807782,
+                "order_items"=> [
+            {
+                "sku"=> null,
+                "name"=> "Pendaftaran",
+                "price"=> 44000,
+                "quantity"=> 1,
+                "subtotal"=> 44000,
+                "product_url"=> null,
+                "image_url"=> null
+            }
+        ],
+        "instructions"=> [
+            {
+                "title"=> "Pembayaran via ALFAMART",
+                "steps"=> [
+                    "Datang ke Alfamart",
+                    "Sampaikan ke kasir ingin melakukan pembayaran Plasamall",
+                    "Berikan kode bayar (<b>748846166652751</b>) ke kasir",
+                    "Bayar sesuai jumlah yang diinfokan oleh kasir",
+                    "Simpan struk bukti pembayaran Anda"
+                ]
+            }
+        ]
+
+            ];

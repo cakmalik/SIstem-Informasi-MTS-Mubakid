@@ -1,0 +1,29 @@
+1. Laravel 9.1
+2. Laravel/ui (composer require laravel/ui)
+3. bootstrap auth scaffold (php artisan ui bootstrap --auth)
+4. menggunakan template adminlte
+5. adminlte3
+# 6. toastr
+#  head :
+#     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+#     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+#     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+#  foot :
+#     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
+#     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+6. sweetalert (https://sweetalert2.github.io/)
+https://codelapan.com/post/cara-menggunakan-sweet-alert-di-laravel-8
+meletakkannya di controller utama, sehingga kapanpun ngirim session pasti muncul
+https://dev.to/jeromew90/how-use-sweetalert2-in-laravel-8-using-composer-jki
+composer require realrashid/sweet-alert
+php artisan sweetalert:publish
+@include('sweetalert::alert') in blade
+Alert::success('Congrats', 'You\'ve Successfully Registered'); in controller
+
+7. toastr
+
+8. letter avatar from https://github.com/yohang88/letter-avatar
+9. spatie permission
+
+10. barrvd dompdf
