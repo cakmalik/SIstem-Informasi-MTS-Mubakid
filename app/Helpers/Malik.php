@@ -26,12 +26,6 @@ class Malik {
         return $nis;
     }
     
-    public static function cekRoleId()
-    {
-        $email = Auth::user()->email;
-        $cekrole = Student::where('email',$email)->first()->role_id;
-        return $cekrole;
-    }
     public static function trimNis($nis){
        $nis = str_replace(' ', '', $nis);
         return $nis;

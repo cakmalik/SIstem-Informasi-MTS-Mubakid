@@ -75,7 +75,7 @@
 
         <tr>
             <td style="padding-left: 30px">NIS</td>
-            <td style="width: 300px" class="capitalize">: {{ \Malik::trimNis($data->nis) }}</td>
+            <td style="width: 300px" class="capitalize">: {{ App\Helpers\Malik::trimNis($data->nis) }}</td>
         </tr>
         <tr>
             <td style="padding-left: 30px">NISN</td>
