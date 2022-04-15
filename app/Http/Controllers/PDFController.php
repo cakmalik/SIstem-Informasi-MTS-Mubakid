@@ -14,15 +14,15 @@ class PDFController extends Controller
     {
         $data = Student::findOrFail($id);
         $pdf = PDF::loadView('pdf.biodata', compact('data'));
-        // return $pdf->stream('filename.pdf');
-        return $pdf->download('bio-'.$data->nama_lengkap.'.pdf');
+        return $pdf->stream('filename.pdf');
+        // return $pdf->download('bio-'.$data->nama_lengkap.'.pdf');
     }
     public function mou($id)
     {
         $data = Student::findOrFail($id);
         $pdf = PDF::loadView('pdf.mou', compact('data'));
-        // return $pdf->stream('filename.pdf');
-        return $pdf->download('mou-'.$data->nama_lengkap.'.pdf');    
+        return $pdf->stream('filename.pdf');
+        // return $pdf->download('mou-'.$data->nama_lengkap.'.pdf');    
     }
     public function kirimWa($id)
     {  

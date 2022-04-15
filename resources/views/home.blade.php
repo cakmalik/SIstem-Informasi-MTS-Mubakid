@@ -54,7 +54,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ route('pdf.biodata', Auth::user()->student->id) }}" class="small-box-footer">
+                    <a target="_blank" href="{{ route('pdf.biodata', Auth::user()->student->id) }}" class="small-box-footer">
                         <div class="small-box bg-success py-2">
                             <div class="inner text-center">
                                 <h4>Biodata<sup style="font-size: 20px"></sup></h4>
@@ -64,7 +64,7 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ route('pdf.mou', Auth::user()->student->id) }}" class="small-box-footer">
+                    <a target="_blank" href="{{ route('pdf.mou', Auth::user()->student->id) }}" class="small-box-footer">
                         <div class="small-box bg-warning py-2">
                             <div class="inner text-center">
                                 <h4>Persetujuan<sup style="font-size: 20px"></sup></h4>
