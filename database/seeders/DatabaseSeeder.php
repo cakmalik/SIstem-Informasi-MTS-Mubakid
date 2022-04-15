@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'guest']);
         $this->call(UserSeeder::class);
         $this->call(BillTypeSeeder::class);
+        $this->call(DatabaseSettingSeeder::class);
     }
 }

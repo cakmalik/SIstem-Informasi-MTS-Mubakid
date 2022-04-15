@@ -9,6 +9,7 @@ use App\Http\Controllers\Payment\TransactionController;
 
 
 Route::get('/', function () {
+    
     return view('welcome');
 });
 Route::get('generate', function (){

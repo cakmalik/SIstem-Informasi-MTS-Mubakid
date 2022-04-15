@@ -85,6 +85,8 @@ class StudentController extends Controller
             $filePath   = 'storage/'.$path . $fileName_wali;
             $data['foto_ortu']=$fileName_wali;
         }
+        
+        $data['nis']
         $student = Student::create($data);
         Auth::user()->syncRoles('siswa');
         Alert::success('Selamat', 'kamu berhasil');
