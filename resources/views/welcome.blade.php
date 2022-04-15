@@ -1256,9 +1256,9 @@
                     </p>
                     <!-- Buttons -->
                     <div class="text-center text-md-left mt-5">
-                        <button class="btn btn-warning btn-icon" type="button"
+                        {{-- <button class="btn btn-warning btn-icon" type="button"
                             onClick="document.getElementById('alur').scrollIntoView();" />Alur Pendaftaran
-                        </button>
+                        </button> --}}
                         <a href="{{ route('register') }}" class="btn btn-success btn-icon">
                             <span class="btn-inner--text">Mendaftar</span>
                             <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>

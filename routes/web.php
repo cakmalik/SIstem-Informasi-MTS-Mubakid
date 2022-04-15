@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Malik;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
@@ -9,12 +10,7 @@ use App\Http\Controllers\Payment\TransactionController;
 
 
 Route::get('/', function () {
-    
     return view('welcome');
-});
-Route::get('generate', function (){
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-    echo 'ok';
 });
 Auth::routes();
 

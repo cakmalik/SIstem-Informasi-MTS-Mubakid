@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Malik;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -86,10 +87,10 @@ class StudentController extends Controller
             $data['foto_ortu']=$fileName_wali;
         }
         
-        $data['nis']
+        $data['nis']= Malik::generateNis();
         $student = Student::create($data);
         Auth::user()->syncRoles('siswa');
-        Alert::success('Selamat', 'kamu berhasil');
+        Alert::success('Selamat', 'Data berhasil dikirim');
         return redirect()->route('home');
     }
 

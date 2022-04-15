@@ -6,25 +6,22 @@ use App\Models\Student;
 use App\Models\DatabaseSetting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
- 
-class Malik {
-    public static function nis()
-    {
-        $nis_start_from = DatabaseSetting::where('name','nis_start_from')->first();
-        dd($nis_start_from);
-        $thn = date('y');
-        $nsm = DatabaseSetting::where('name','nsm')->first()->value;
-        $latestNis= Student::orderBy('nis','desc')->first();
 
-        if($latestNis->nis){
-            $pecah_nis = explode(" ", $latestNis->nis);
-            //mencari element array 0
-            $hasil = $pecah_nis[2];
-            //tampilkan hasil pemecahan
-            $no_urut_berikutnya = $hasil+1;
-            $nis = $nsm.' '.$thn.' '.$no_urut_berikutnya;
+class Malik {
+    public static function generateNis()
+    {
+        $cek_nis = Student::max('nis');
+        $nsm = DatabaseSetting::where('name','nsm')->first()->value;
+        $tahun = date('y');
+        
+        if($cek_nis == null){
+            $nis_start_from = DatabaseSetting::where('name','nis_start_from')->first()->value;
+            $nis_start_from = $nis_start_from + 1;
+            $nis = $nsm .' '. $tahun .' '. $nis_start_from;
         }else{
-            $nis = $nsm.' '.$thn.' '.$nis_start_from;
+            $pecah_nis = explode(" ", $cek_nis);
+            $hasil = (int)$pecah_nis[2] + 1;
+            $nis = $nsm .' '. $tahun .' '. $hasil;
         }
         return $nis;
     }
@@ -34,5 +31,9 @@ class Malik {
         $email = Auth::user()->email;
         $cekrole = Student::where('email',$email)->first()->role_id;
         return $cekrole;
+    }
+    public static function trimNis($nis){
+       $nis = str_replace(' ', '', $nis);
+        return $nis;
     }
 }

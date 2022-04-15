@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "realrashid/sweet-alert": "^5.0",
+        "spatie/laravel-backup": "^8.1",
         "spatie/laravel-permission": "^5.5",
         "yohang88/letter-avatar": "^2.2"
     },

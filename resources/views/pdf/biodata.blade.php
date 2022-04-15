@@ -72,19 +72,10 @@
             <td style="padding-left: 30px">Nama lengkap</td>
             <td style="width: 300px" class="capitalize">: {{ str()->title($data->nama_lengkap) }}</td>
         </tr>
-        {{-- @if ($nis)
-            @php
-                $nis = explode(' ', $nis);
-                $nis = $nis[0] . $nis[1] . $nis[2];
-            @endphp
-        @else
-            @php
-                $nis = $nis;
-            @endphp
-        @endif --}}
+
         <tr>
             <td style="padding-left: 30px">NIS</td>
-            <td style="width: 300px" class="capitalize">: {{ str()->title($data->nis) }}</td>
+            <td style="width: 300px" class="capitalize">: {{ \Malik::trimNis($data->nis) }}</td>
         </tr>
         <tr>
             <td style="padding-left: 30px">NISN</td>

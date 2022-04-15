@@ -28,7 +28,7 @@ class DatabaseSettingSeeder extends Seeder
             ],
             [
                 'name'=>'nis_start_from',
-                'value'=>771,
+                'value'=>1500,
                 'info'=>'dimulainya nomor urut (nis) jika belum ada database sama sekali'
             ],
             [
