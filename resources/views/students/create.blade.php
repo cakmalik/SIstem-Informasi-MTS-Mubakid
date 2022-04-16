@@ -33,7 +33,7 @@
                     <input type="text" name="status_keluarga" class="form-control" placeholder="status_keluarga">
                     <input type="text" name="anak_ke" class="form-control" placeholder="anak_ke">
                     <input type="text" name="nama_ayah" class="form-control" placeholder="nama_ayah">
-                    <input type="text" name="tempatlahir_ayah" class="form-control" placeholder="tanggal_lahir_ayah">
+                    <input type="text" name="tempatlahir_ayah" class="form-control" placeholder="tempat_lahir_ayah">
                     <input type="date" name="tanggallahir_ayah" class="form-control" placeholder="tanggal_lahir_ayah">
                     <input type="text" name="pendidikan_ayah" class="form-control" placeholder="pendidikan_ayah">
                     <input type="text" name="pekerjaan_ayah" class="form-control" placeholder="pekerjaan_ayah">

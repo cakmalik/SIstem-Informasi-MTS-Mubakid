@@ -18,8 +18,8 @@ class ImportStudents implements ToModel, WithHeadingRow, WithValidation, SkipsOn
     public function model(array $row)
     {
         return new Student([
+
             'user_id'=>$row['user_id'],
-            'urutan'=>$row['urutan'],
             'nis'=>$row['nis'],
             'nama_lengkap'=>$row['nama_lengkap'],
             'nisn'=>$row['nisn'],
@@ -66,9 +66,7 @@ class ImportStudents implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             'no_pkh'=>$row['no_pkh'],
             'no_kks_kps'=>$row['no_kks_kps'],
             'no_kip'=>$row['no_kip'],
-
-            'foto_siswa'=>$row['foto_siswa'],
-            'foto_ortu'=>$row['foto_ortu'],
+            
             'status'=>$row['status'],
         ]);
     }
@@ -76,14 +74,14 @@ class ImportStudents implements ToModel, WithHeadingRow, WithValidation, SkipsOn
     public function rules():array
     {
         return [
-            '*.nis'=>['unique:students,nis']
+            '*.nik'=>['unique:students,nik']
         ];
     }
 
     public function customValidationMessages()
     {
         return [
-            'nis.unique' => ' :attribute sudah ada.',
+            'nik.unique' => ' :attribute sudah ada.',
         ];
     }
 }

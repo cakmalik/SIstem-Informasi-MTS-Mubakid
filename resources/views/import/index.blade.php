@@ -1,16 +1,26 @@
 @extends('layouts.app')
 @section('title', 'Import')
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     @include('comingsoon')
                     <div class="card-body">
-                        <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal"
-                            data-target="#modal_import_students">
+                        <a href="{{ asset('MTS2/contoh_format_import_siswa.xlsx') }}" type="button"
+                            class="btn btn-info btn-sm btn-flat">
                             Download Contoh Format
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal"
                             data-target="#modal_import_students">
                             Import Students
