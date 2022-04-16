@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('database_settings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('value');
+            $table->longText('value');
             $table->string('info')->nullable();
             $table->timestamps();
         });

@@ -7,9 +7,11 @@ use Illuminate\View\Component;
 class Modal extends Component
 {
     public $id;
-    public function __construct($id)
+    public $modalHeader=true;
+    public function __construct($id,$modalHeader)
     {
         $this->id=$id;
+        $this->modalHeader=$modalHeader;
     }
     
     /**

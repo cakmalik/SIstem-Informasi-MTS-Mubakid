@@ -19,20 +19,20 @@ return new class extends Migration
             $table->string('nis')->nullable();
             $table->string('nama_lengkap');
             $table->string('nisn')->nullable();
-            $table->string('nik');
-            $table->string('kk');
-            $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
-            $table->string('jenis_kelamin');
-            $table->string('alamat');
-            $table->string('desa');
-            $table->string('kecamatan');
-            $table->string('kota');
-            $table->string('provinsi');
-            $table->string('kode_pos');
-            $table->string('no_hp');
-            $table->string('hobi');
-            $table->string('cita_cita');
+            $table->string('nik')->nullable();
+            $table->string('kk')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('tanggal_lahir')->nullable();
+            $table->string('jenis_kelamin')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('kode_pos')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('hobi')->nullable();
+            $table->string('cita_cita')->nullable();
             
             $table->string('asal_sekolah')->nullable();
             $table->string('npsn_sekolah')->nullable();
@@ -66,6 +66,7 @@ return new class extends Migration
             $table->string('foto_siswa')->nullable();
             $table->string('foto_ortu')->nullable();
             $table->string('status')->default('baru');
+            $table->bigInteger('urutan')->nullable();
             $table->timestamps();
         });
     }

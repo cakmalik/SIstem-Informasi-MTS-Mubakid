@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Helpers\Malik;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +16,10 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
-        return view('students.index', compact('students'));
+        $collection = Student::all();
+        return view('students.index', compact('collection'));
     }
-
+    
     public function create()
     {
         //
@@ -57,66 +58,108 @@ class StudentController extends Controller
             }
         }
     }
-
+    
     public function store(StoreStudentRequest $request)
     {
-        $validatedData = $request->validate([
-            'foto' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'foto_wali' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
+        // if hasrole admin
+        if(Auth::user()->hasRole('guest')){
+            $validatedData = $request->validate([
+                'foto' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'foto_wali' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            
+            $data =  $request->all();
+            $data['user_id'] = auth()->user()->id;
+            
+            if ($file = $request->file('foto_siswa')) {
+                $data['foto_siswa']= $this->storeImgSiswa($file);
+            }
+            if ($file = $request->file('foto_ortu')) {
+                $data['foto_ortu']= $this->storeImgWali($file);
+            }
+            
+            $data['nis']= Malik::generateNis();
+            $student = Student::create($data);
+            Auth::user()->syncRoles('siswa');
+            Alert::success('Selamat', 'Data berhasil dikirim');
+            return redirect()->route('home');
+        }else{
 
-        $data =  $request->all();
-        $data['user_id'] = auth()->user()->id;
-        
-        if ($file = $request->file('foto')) {
+            $validatedData = $request->validate([
+                'foto' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'foto_wali' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            
+            $data =  $request->all();
+            if ($file = $request->file('foto_siswa')) {
+                $data['foto_siswa']= $this->storeImgSiswa($file);
+            }
+            if ($file = $request->file('foto_ortu')) {
+                $data['foto_ortu']= $this->storeImgWali($file);
+            }
+
+            
+            
+            $generate = Malik::generateNis();
+            $email  = str()->snake($generate[0]) . '@mts2.com';
+            $user = User::create([
+                'name'=>$request->nama_lengkap,
+                'email'=>$email,
+                'password'=>bcrypt('password'),
+            ]);
+            $data['user_id'] = $user->id;
+            $data['nis']= $generate[0];
+            $data['urutan']= $generate[1];
+            $student = Student::create($data);
+            $user->assignRole('siswa');
+            Alert::success('Selamat', 'Data berhasil dikirim');
+            return back();
+        }
+    }
+    
+    /**
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Student  $student
+    * @return \Illuminate\Http\Response
+    */
+    public function show(Student $student)
+    {
+        //
+    }
+    
+    public function edit(Student $student)
+    {
+        //
+    }
+    
+    public function update(UpdateStudentRequest $request, Student $student)
+    {
+        //
+    }
+    
+    public function destroy(Student $student)
+    {
+        //
+    }
+    public function storeImgSiswa($file)
+    {
             $path = 'foto_siswa/';
             $fileName_santri   = time() . $file->getClientOriginalName();
             Storage::disk('public')->put($path . $fileName_santri, File::get($file));
             $file_name  = $file->getClientOriginalName();
             $file_type  = $file->getClientOriginalExtension();
             $filePath   = 'storage/'.$path . $fileName_santri;
-            $data['foto_siswa']=$fileName_santri;
-        }
-        if ($file = $request->file('foto_wali')) {
-            $path = 'foto_wali/';
-            $fileName_wali   = time() . $file->getClientOriginalName();
-            Storage::disk('public')->put($path . $fileName_wali, File::get($file));
-            $file_name  = $file->getClientOriginalName();
-            $file_type  = $file->getClientOriginalExtension();
-            $filePath   = 'storage/'.$path . $fileName_wali;
-            $data['foto_ortu']=$fileName_wali;
-        }
-        
-        $data['nis']= Malik::generateNis();
-        $student = Student::create($data);
-        Auth::user()->syncRoles('siswa');
-        Alert::success('Selamat', 'Data berhasil dikirim');
-        return redirect()->route('home');
+            return $fileName_santri;
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Student  $student
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Student $student)
+    public function storeImgWali($file)
     {
-        //
-    }
-
-    public function edit(Student $student)
-    {
-        //
-    }
-
-    public function update(UpdateStudentRequest $request, Student $student)
-    {
-        //
-    }
-
-    public function destroy(Student $student)
-    {
-        //
+        $path = 'foto_wali/';
+        $fileName_wali   = time() . $file->getClientOriginalName();
+        Storage::disk('public')->put($path . $fileName_wali, File::get($file));
+        $file_name  = $file->getClientOriginalName();
+        $file_type  = $file->getClientOriginalExtension();
+        $filePath   = 'storage/'.$path . $fileName_wali;
+        return $fileName_wali;
     }
 }

@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(BillTypeSeeder::class);
         $this->call(DatabaseSettingSeeder::class);
+        $this->call(WhatsappMessageSeeder::class);
     }
 }

@@ -17,7 +17,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endpush
 @section('content')
-    <x-modal id="modal-default">
+    <x-modal id="modal-checkout" :modalHeader="false">
         <x-slot name="title">
             Modal title
         </x-slot>
@@ -81,7 +81,7 @@
 
         </x-slot>
     </x-modal>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-checkout">
         Pilih Metode Pembayaran
     </button>
 

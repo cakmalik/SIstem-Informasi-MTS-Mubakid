@@ -456,14 +456,14 @@
                 <div class="col-md">
                     <div class="form-group">
                         <label for="no_kip">Foto Siswa/i (max:500kb)</label>
-                        <input type="file" name="foto" class="form-control">
+                        <input type="file" name="foto_siswa" class="form-control">
                     </div>
 
                 </div>
                 <div class="col-md">
                     <div class="form-group">
                         <label for="no_kip">Foto Ayah/Ortu (max:500kb)</label>
-                        <input type="file" name="foto_wali" class="form-control">
+                        <input type="file" name="foto_ortu" class="form-control">
                     </div>
                 </div>
             </div>

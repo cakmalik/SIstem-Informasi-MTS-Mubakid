@@ -13,9 +13,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('sendWa',function ()
+// {
+//     Malik::sendWa(1,'wa_success_reg');
+//     return 'berhasil';
+// });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('student/status/{status}', [StudentController::class, 'status'])->name('students.status');
 Route::resource('students', StudentController::class);
 
 Route::controller(PDFController::class)->name('pdf.')->group(function ()
