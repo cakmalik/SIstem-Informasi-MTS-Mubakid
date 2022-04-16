@@ -149,7 +149,7 @@ class StudentController extends Controller
     
     public function destroy(Student $student)
     {
-        Student::find($student)->delete();
+        $student->delete();
         Alert::success('OK', 'Data berhasil dihapus');
         return back();
     }
