@@ -65,7 +65,9 @@
     </div>
 
     <div id="content">
-        <img src="{{ public_path('storage/foto_siswa/') . $data->foto_siswa }}" style="width: 150px;">
+        @if ($data->foto_siswa != null)
+            <img src="{{ public_path('storage/foto_siswa/') . $data->foto_siswa }}" style="width: 150px;">
+        @endif
     </div>
     <table class="table table-striped">
         <tr>

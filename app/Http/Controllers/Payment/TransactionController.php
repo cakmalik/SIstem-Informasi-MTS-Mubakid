@@ -183,10 +183,17 @@ class TransactionController extends Controller
         }
         return view('payment.list', compact('transactions'));
     }
-    // public function payCash(Request $request)
-    // {
-    //     $transaksi = Transaction::where('reference',$request->reference)->update(['status'=>'PAID']);
-    //     Alert::success('Success','Pembayaran Berhasil');
-    //     return redirect()->route('pay.list','offline');
-    // }
+    public function storeManual($user_id,$status)
+    {
+        return Transaction::create([
+            'user_id'=>$user_id,
+            'bill_type_id'=>BillType::where('name','pendaftaran')->first()->id,
+            'reference'=>'MBKD-'.time(),
+            'merchant_ref'=>'REG'.time(),
+            'total_amount'=>BillType::where('name','pendaftaran')->first()->amount,
+            'is_cash'=>true,
+            'status'=>$status,
+        ]);
+    }
 }
+    

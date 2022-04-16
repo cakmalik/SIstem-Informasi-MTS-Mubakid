@@ -15,6 +15,7 @@ class PDFController extends Controller
         $data = Student::findOrFail($id);
         $pdf = PDF::loadView('pdf.biodata', compact('data'));
         return $pdf->stream('filename.pdf');
+        // return view('pdf.biodata', compact('data'));
         // return $pdf->download('bio-'.$data->nama_lengkap.'.pdf');
     }
     public function mou($id)

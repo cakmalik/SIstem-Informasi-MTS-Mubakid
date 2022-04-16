@@ -5,19 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Helpers\Malik;
 use App\Models\Student;
+use App\Models\BillType;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Http\Controllers\Payment\TransactionController;
 
 class StudentController extends Controller
 {
     public function index()
     {
         $collection = Student::all();
-        return view('students.index', compact('collection'));
+        $nominal = BillType::where('name','pendaftaran')->first()->amount;
+        $malik=  new Malik();
+        $kota = $malik->getKota();
+        $prov = $malik->getProvinsi();
+        return view('students.index', compact('collection','nominal','kota','prov'));
     }
     
     public function create()
@@ -97,8 +104,6 @@ class StudentController extends Controller
             if ($file = $request->file('foto_ortu')) {
                 $data['foto_ortu']= $this->storeImgWali($file);
             }
-
-            
             
             $generate = Malik::generateNis();
             $email  = str()->snake($generate[0]) . '@mts2.com';
@@ -111,8 +116,10 @@ class StudentController extends Controller
             $data['nis']= $generate[0];
             $data['urutan']= $generate[1];
             $student = Student::create($data);
+            $transaction = new TransactionController();
+            $transaction->storeManual($student->id,$request->status_pembayaran);
             $user->assignRole('siswa');
-            Alert::success('Selamat', 'Data berhasil dikirim');
+            Alert::success('Selamat', 'Siswa baru berhasil ditambah');
             return back();
         }
     }

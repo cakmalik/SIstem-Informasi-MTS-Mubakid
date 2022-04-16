@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 
+use stdClass;
 use App\Models\Grade;
 use GuzzleHttp\Client;
 use App\Models\Student;
@@ -67,6 +68,91 @@ class Malik {
                     $result =  json_decode($response->getBody()->getContents());
                     return response()->json(['data' => $result]);
                 }
+            }
+        }
+        public function getKota()
+        {
+            $curl_kota = curl_init();
+            
+            curl_setopt_array($curl_kota, [
+                CURLOPT_URL => 'http://api.rajaongkir.com/starter/city',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_HTTPHEADER => ['key: 656724c6467711a1a6adfa81ff5e97ce'],
+            ]);
+            
+            $response = curl_exec($curl_kota);
+            $err = curl_error($curl_kota);
+            
+            curl_close($curl_kota);
+            
+            $listKota = []; //bikin array untuk nampung list kota
+            
+            if ($err) {
+                echo 'cURL Error #:' . $err;
+            } else {
+                $arrayResponse = json_decode($response, true); //decode response dari raja ongkir, json ke array
+                
+                $tempListKota = $arrayResponse['rajaongkir']['results']; // ambil array yang dibutuhin aja, disini resultnya aja
+                
+                //looping array temporary untuk masukin object yang kita butuhin
+                foreach ($tempListKota as $value) {
+                    //bikin object baru
+                    $kota = new stdClass();
+                    $kota->id = $value['city_id']; //id kotanya
+                    $kota->nama = $value['city_name']; //nama kotanya
+                    $kota->type = $value['type']; //nama kotanya
+                    
+                    array_push($listKota, $kota); //push object kota yang kita bikin ke array yang nampung list kota
+                }
+                return $listKota;
+            }
+        }
+        public function getProvinsi()
+        {
+            $curl_prov = curl_init();
+            
+            curl_setopt_array($curl_prov, [
+                CURLOPT_URL => 'http://api.rajaongkir.com/starter/province',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_HTTPHEADER => ['key: 656724c6467711a1a6adfa81ff5e97ce'],
+            ]);
+            
+            $response = curl_exec($curl_prov);
+            $err = curl_error($curl_prov);
+            
+            curl_close($curl_prov);
+            
+            $listprov = []; //bikin array untuk nampung list kota
+            
+            if ($err) {
+                echo 'cURL Error #:' . $err;
+            } else {
+                $arrayResponse = json_decode($response, true); //decode response dari raja ongkir, json ke array
+                
+                $templistprov = $arrayResponse['rajaongkir']['results']; // ambil array yang dibutuhin aja, disini resultnya aja
+                
+                //looping array temporary untuk masukin object yang kita butuhin
+                foreach ($templistprov as $value) {
+                    //bikin object baru
+                    $prov = new stdClass();
+                    //  $prov->id = $value['province_id']; //id provnya
+                    $prov->nama = $value['province']; //nama provnya
+                    //  $prov->type = $value['type']; //nama provnya
+                    
+                    array_push($listprov, $prov); //push object prov yang kita bikin ke array yang nampung list prov
+                }
+                
+                return $listprov;
             }
         }
     }
