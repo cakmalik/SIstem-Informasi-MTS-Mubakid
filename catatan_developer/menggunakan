@@ -27,3 +27,5 @@ Alert::success('Congrats', 'You\'ve Successfully Registered'); in controller
 9. spatie permission
 
 10. barrvd dompdf
+
+11. matwebiste/excel

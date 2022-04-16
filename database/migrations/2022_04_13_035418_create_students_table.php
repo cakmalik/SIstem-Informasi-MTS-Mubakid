@@ -66,7 +66,7 @@ return new class extends Migration
             $table->string('foto_siswa')->nullable();
             $table->string('foto_ortu')->nullable();
             $table->string('status')->default('baru');
-            $table->bigInteger('urutan')->nullable();
+
             $table->timestamps();
         });
     }

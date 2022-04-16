@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Malik;
+use App\Http\Controllers\ImportExportController;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
@@ -50,4 +51,14 @@ Route::get('student/status/{status}', [StudentController::class, 'status'])->nam
 Route::resource('students', StudentController::class);
 Route::group(['middleware'=>['role:admin|super admin']], function ()
 {
+});
+
+Route::controller(ImportExportController::class)->name('import.')->group(function ()
+{
+    Route::get('import','index')->name('index');
+    Route::post('import/students','importStudents')->name('students');
+});
+Route::controller(ImportExportController::class)->name('export.')->group(function ()
+{
+    Route::get('export/students','exportStudents')->name('students');
 });
