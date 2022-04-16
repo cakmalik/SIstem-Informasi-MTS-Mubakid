@@ -78,6 +78,6 @@
         @endif
     @endhasrole
     @hasrole('admin|super admin')
-        <img src="http://www.pradisonnidhiltd.com/web/images/comingsoon.gif" style="width:100px">
+        @include('comingsoon')
     @endhasrole
 @endsection

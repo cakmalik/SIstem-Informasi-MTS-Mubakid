@@ -5,6 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    @include('comingsoon')
                     <div class="card-body">
                         <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal"
                             data-target="#modal_import_students">
