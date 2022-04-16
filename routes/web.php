@@ -46,34 +46,3 @@ Route::group(['middleware'=>['role:siswa|admin|super admin']], function ()
    });
 });
 Route::post('callback',[TripayCallbackController::class,'handle']);
-
-
-
-
-
-Route::get('/coba', function ()
-{
-    $number = 6282247345660;
-        $message = "TEST WA";
-        $client = new Client();
-        try {
-            $res = $client->post('http://sister.sditharum.id:1234/send-message', [
-                
-                'headers' => [
-                    'Content-Type' => 'application/x-www-form-urlencoded',
-                ],
-                'form_params' => [
-                    // 'number' => sprintf('%08d', 85233002598),
-                    'number' => $number,
-                    'message' => $message
-                    ]
-                ]);
-                $res = json_decode($res->getBody()->getContents(), true);
-                return back()->with('success','Terkirim');
-            }
-            catch (Exception $e) {
-                $response = $e->getresponse();
-                $result =  json_decode($response->getBody()->getContents());
-                return response()->json(['data' => $result]);
-            }
-});
