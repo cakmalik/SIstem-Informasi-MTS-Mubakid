@@ -86,7 +86,7 @@ class StudentController extends Controller
             }
             
             $data['nis']= Malik::generateNis()[0];
-            $generate = Malik::generateNis();
+            $data['urutan']= Malik::generateNis()[1];
 
             $student = Student::create($data);
             Auth::user()->syncRoles('siswa');
