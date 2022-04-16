@@ -7,6 +7,7 @@ use App\Http\Controllers\PDFController;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Payment\TransactionController;
+use App\Http\Controllers\Payment\TripayCallbackController;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {

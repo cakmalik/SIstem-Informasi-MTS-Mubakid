@@ -62,7 +62,12 @@
                                 <a class="dropdown-item" target="_blank" href="{{ route('pdf.mou', $item->id) }}">MoU</a>
                                 {{-- <a class="dropdown-item" href="{{ route('pdf.biodata') }}">Cetak Kts</a> --}}
                                 <div class="dropdown-divider"></div>
-                                <a class="btn btn-block btn-danger" href="#"><i class="fas fa-trash"></i> </a>
+                                <form action="{{ route('students.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-block btn-danger"><i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </th>

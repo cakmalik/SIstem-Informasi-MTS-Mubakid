@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class TripayCallbackController extends Controller
 {
     // protected $privateKey = 'I-Dvhwf-vPwdR';
-    protected $privateKey = config('tripay.private_key');
-
+    protected $privateKey = 'oUGml-VzFol-6cWKp-wa6d4-wVijS';
+// 
     public function handle(Request $request)
     {
         $callbackSignature = $request->server('HTTP_X_CALLBACK_SIGNATURE');
