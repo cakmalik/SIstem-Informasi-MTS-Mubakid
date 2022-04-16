@@ -4,7 +4,6 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 @push('foot')
-    {{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>s --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -66,7 +65,8 @@
                                     <form action="{{ route('students.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-block btn-danger"><i class="fas fa-trash"></i>
+                                        <button onclick="confirm('Yakin mau di hapus?')" type="submit"
+                                            class="btn btn-block btn-danger"><i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </div>
