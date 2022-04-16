@@ -9,6 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Payment\TransactionController;
 use App\Http\Controllers\Payment\TripayCallbackController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
@@ -62,3 +63,5 @@ Route::controller(ImportExportController::class)->name('export.')->group(functio
 {
     Route::get('export/students','exportStudents')->name('students');
 });
+
+Route::resource('users', UserController::class);

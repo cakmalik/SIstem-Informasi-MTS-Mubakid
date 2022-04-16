@@ -15,7 +15,7 @@
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-exclamation-triangle"></i>Peringatan </h5>
-            Pastikan anda telah mengetahui <strong>PROSEDUR IMPORT</strong> sebelum melakukannya.
+            Boleh melakukan Import Hanya jika anda telah mengetahui <strong>PROSEDURNYA</strong>
         </div>
         <div class="row justify-content-start">
             <div class="col-md-6">
