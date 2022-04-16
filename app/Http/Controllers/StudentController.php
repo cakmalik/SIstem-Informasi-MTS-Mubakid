@@ -122,7 +122,7 @@ class StudentController extends Controller
             $transaction->storeManual($student->id,$request->status_pembayaran);
             $user->assignRole('siswa');
             Alert::success('Selamat', 'Siswa baru berhasil ditambah');
-            return back();
+            return redirect()->route('students.index');
         }
     }
     
