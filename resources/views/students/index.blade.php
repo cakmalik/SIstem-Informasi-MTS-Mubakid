@@ -22,8 +22,8 @@
     @include('students.create')
     <div class=" d-flex justify-content-between mb-2">
         <div>
-            <a href="{{ route('students.status', 'baru') }}" class="btn btn-flat btn-outline-info btn-sm">Baru</a>
-            <a href="{{ route('students.status', 'aktif') }}" class="btn btn-flat btn-outline-info btn-sm">Aktif</a>
+            {{-- <a href="{{ route('students.status', 'baru') }}" class="btn btn-flat btn-outline-info btn-sm">Baru</a>
+            <a href="{{ route('students.status', 'aktif') }}" class="btn btn-flat btn-outline-info btn-sm">Aktif</a> --}}
         </div>
         <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-default">
             Tambah Siswa
