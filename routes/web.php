@@ -45,8 +45,8 @@ Route::group(['middleware'=>['role:siswa|admin|super admin']], function ()
 });
 Route::post('callback',[TripayCallbackController::class,'handle']);
 
+Route::get('student/status/{status}', [StudentController::class, 'status'])->name('students.status');
+Route::resource('students', StudentController::class);
 Route::group(['middleware'=>['role:admin|super admin']], function ()
 {
-    Route::get('student/status/{status}', [StudentController::class, 'status'])->name('students.status');
-    Route::resource('students', StudentController::class);
 });
