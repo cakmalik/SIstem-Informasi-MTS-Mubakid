@@ -77,4 +77,7 @@
             </div>
         @endif
     @endhasrole
+    @hasrole('admin|super admin')
+        <img src="http://www.pradisonnidhiltd.com/web/images/comingsoon.gif" style="width:100px">
+    @endhasrole
 @endsection
