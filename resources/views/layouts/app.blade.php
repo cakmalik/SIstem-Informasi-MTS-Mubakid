@@ -85,12 +85,12 @@
                     PEMBAYARAN</a>
             </div>
         @else
-            <footer class="main-footer mt-6">
+            {{-- <footer class="main-footer mt-6">
                 <div class="float-right d-none d-sm-block">
                     <b>Version</b> 3.2.0
                 </div>
                 <strong>&copy;<a href="https://wa.me/6285333920007"> BakidDev</a>.</strong> Template By AdminLTE3.
-            </footer>
+            </footer> --}}
         @endif
 
         <!-- Control Sidebar -->
