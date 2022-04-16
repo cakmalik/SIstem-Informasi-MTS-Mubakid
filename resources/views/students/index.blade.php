@@ -77,4 +77,4 @@
             </tbody>
         </table>
     @endsection
-    @hasrole('admin')
+@endhasrole
