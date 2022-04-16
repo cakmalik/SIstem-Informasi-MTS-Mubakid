@@ -85,7 +85,9 @@ class StudentController extends Controller
                 $data['foto_ortu']= $this->storeImgWali($file);
             }
             
-            $data['nis']= Malik::generateNis();
+            $data['nis']= Malik::generateNis()[0];
+            $generate = Malik::generateNis();
+
             $student = Student::create($data);
             Auth::user()->syncRoles('siswa');
             Alert::success('Selamat', 'Data berhasil dikirim');
