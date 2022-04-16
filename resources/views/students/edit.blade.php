@@ -7,8 +7,11 @@
         <div class="container">
             <a href="{{ url()->previous() }}" class="btn btn-info btn-flat btn-sm mb-3"> <i class="fas fa-arrow-left"></i>
                 Kembali</a>
-            <a href="{{ route('students.edit', $student->id) }}" class="btn btn-info btn-flat btn-sm mb-3"> <i
-                    class="fas fa-edit"></i> Edit</a>
+            @if ($detail_mode)
+                <a href="{{ route('students.edit', $student->id) }}" class="btn btn-info btn-flat btn-sm mb-3"> <i
+                        class="fas fa-edit"></i> Edit</a>
+            @endif
+
             <div class="card p-4">
                 <div class="row mb-3 d-flex justify-content-around">
                     <img class="" src="{{ asset('storage/foto_siswa/' . $student->foto_siswa) }}"
