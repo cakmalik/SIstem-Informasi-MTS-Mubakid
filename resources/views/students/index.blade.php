@@ -105,6 +105,7 @@
     <table id="datatable" class="display" style="width:100%">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Nama</th>
                 <th>Kota</th>
                 <th>Jenis kelamin</th>
@@ -115,6 +116,7 @@
         <tbody>
             @foreach ($collection as $item)
                 <tr>
+                    <th>{{ $loop->iteration }}</th>
                     <th>{{ $item->nama_lengkap }}</th>
                     <th>{{ $item->kota }}</th>
                     <th>{{ $item->jenis_kelamin }}</th>
