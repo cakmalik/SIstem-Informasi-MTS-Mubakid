@@ -19,7 +19,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $collection = Student::all();
+        $collection = Student::orderBy('nama_lengkap', 'asc')->get();
         $nominal = BillType::where('name','pendaftaran')->first()->amount;
         $malik=  new Malik();
         $kota = $malik->getKota();
