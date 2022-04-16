@@ -50,13 +50,14 @@
                         <th>{{ $item->no_hp }}</th>
                         <th>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-info">Detail</button>
+                                <a href="{{ route('students.show', $item->id) }}" type="button"
+                                    class="btn btn-info">Detail</a>
                                 <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
                                     data-toggle="dropdown" aria-expanded="false">
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="{{ route('students.edit', $item->id) }}">Edit</a>
                                     <a class="dropdown-item" target="_blank"
                                         href="{{ route('pdf.biodata', $item->id) }}">Biodata</a>
                                     <a class="dropdown-item" target="_blank" href="{{ route('pdf.mou', $item->id) }}">MoU</a>

@@ -12,36 +12,77 @@
     @endif
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i>Peringatan </h5>
+            Pastikan anda telah mengetahui <strong>PROSEDUR IMPORT</strong> sebelum melakukannya.
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-md-6">
                 <div class="card">
-                    @include('comingsoon')
+                    <div class="card-header">Siswa</div>
                     <div class="card-body">
-                        <a href="{{ asset('MTS2/contoh_format_import_siswa.xlsx') }}" type="button"
-                            class="btn btn-info btn-sm btn-flat">
-                            Download Contoh Format
-                        </a>
-                        <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal"
-                            data-target="#modal_import_students">
-                            Import Students
-                        </button>
-                        <a href="{{ route('export.students') }}" type="button" class="btn btn-info btn-sm btn-flat">
-                            Export Students
-                        </a>
+                        <div class="d-flex justify-content-around">
+                            <a href="{{ asset('MTS2/contoh_format_import_siswa.xlsx') }}" type="button"
+                                class="btn btn-info btn-sm btn-flat">
+                                <i class="fas fa-file-excel"></i> Contoh
+                            </a>
+                            <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal"
+                                data-target="#modal_import_students"> <i class="fas fa-solid fa-upload"></i>
+                                Import
+                            </button>
+                            <a href="{{ route('export.students') }}" type="button" class="btn btn-info btn-sm btn-flat">
+                                <i class="fas fa-solid fa-download"></i> Export
+                            </a>
+                        </div>
                     </div>
-                    <form action="{{ route('import.students') }}" enctype="multipart/form-data" method="POST">
-                        @csrf
-                        <x-modal id="modal_import_students" :modalHeader="false">
-                            <x-slot name="body">
-                                <input type="file" name="file_students" id="file">
-                            </x-slot>
-                            <x-slot name="footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-info btn-sm">Tambah</button>
-                            </x-slot>
-                        </x-modal>
-                    </form>
                 </div>
+                @csrf
+                <x-modal id="modal_import_students" :modalHeader="false">
+                    <form action="{{ route('import.students') }}" enctype="multipart/form-data" method="POST">
+                        <x-slot name="body">
+                            <input type="file" name="file_students" id="file">
+                        </x-slot>
+                        <x-slot name="footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-info btn-sm">Tambah</button>
+                        </x-slot>
+                    </form>
+                </x-modal>
+            </div>
+            {{-- IMPORT EXPORT GURU --}}
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Guru</div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-around">
+                            <a href="{{ asset('MTS2/contoh_format_import_siswa.xlsx') }}" type="button"
+                                class="btn btn-info btn-sm btn-flat">
+                                <i class="fas fa-file-excel"></i> Contoh
+                            </a>
+                            <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal"
+                                data-target="#modal_import_students"> <i class="fas fa-solid fa-upload"></i>
+                                Import
+                            </button>
+                            <a href="{{ route('export.students') }}" type="button" class="btn btn-info btn-sm btn-flat">
+                                <i class="fas fa-solid fa-download"></i> Export
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @csrf
+                <x-modal id="modal_import_students" :modalHeader="false">
+                    <form action="{{ route('import.students') }}" enctype="multipart/form-data" method="POST">
+                        <x-slot name="body">
+                            <input type="file" name="file_students" id="file">
+                        </x-slot>
+                        <x-slot name="footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-info btn-sm">Tambah</button>
+                        </x-slot>
+                    </form>
+                </x-modal>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

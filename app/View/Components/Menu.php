@@ -9,10 +9,12 @@ class Menu extends Component
     public $href;
     public $text;
     public $active; 
-    public function __construct($href, $text, $active)
+    public $icon; 
+    public function __construct($href, $text, $active, $icon)
     {
         $this->href = $href;
         $this->text = $text;
+        $this->icon = $icon;
         if($active == true)
         {
             $this->active = 'active';

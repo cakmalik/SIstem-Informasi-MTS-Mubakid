@@ -134,17 +134,28 @@ class StudentController extends Controller
     */
     public function show(Student $student)
     {
-        //
+        $student = Student::findOrFail($student->id);
+        $detail_mode = true;
+        $malik=  new Malik();
+        $kota = $malik->getKota();
+        $prov = $malik->getProvinsi();
+        return view('students.edit',compact('student','detail_mode','kota','prov'));
     }
     
     public function edit(Student $student)
     {
-        //
+        $malik=  new Malik();
+        $kota = $malik->getKota();
+        $prov = $malik->getProvinsi();
+        $detail_mode = false;
+        return view('students.edit', compact('student','kota','prov', 'detail_mode'));
     }
     
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+       $student->update($request->all());
+        Alert::success('Selamat', 'Data berhasil diubah');
+        return redirect()->route('students.index');
     }
     
     public function destroy(Student $student)
