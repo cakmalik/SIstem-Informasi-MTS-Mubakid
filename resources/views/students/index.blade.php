@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <x-datatables />
+
     <div class=" d-flex justify-content-between mb-2">
         <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-default">
             <i class="fas fa-plus"></i> Tambah Siswa
@@ -61,4 +62,5 @@
         </tbody>
     </table>
     {{-- @include('layouts.partials.confirm') --}}
+    @include('students.create')
 @endsection
