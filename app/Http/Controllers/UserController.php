@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all()->except(1);
+        $users = User::orederBy('id','desc');
         return view('user.index', compact('users'));
     }
 
@@ -60,7 +61,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        
+        $role = User::find($id)->roles;
+        $roles = Role::all();
+        $user = User::findOrFail($id);
+        return view('user.edit',compact('user','role','roles'));
     }
 
     /**
