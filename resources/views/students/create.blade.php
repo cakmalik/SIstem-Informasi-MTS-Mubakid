@@ -119,9 +119,9 @@
             </div>
             <div class="separator my-3">Alamat</div>
             <div class="row">
-                <input type="text" name="alamat" class="form-control" placeholder="alamat">
-                <input type="text" name="desa" class="form-control" placeholder="desa">
-                <input type="text" name="kecamatan" class="form-control" placeholder="kecamatan">
+                <input type="text" name="alamat" class="form-control" placeholder="alamat" required>
+                <input type="text" name="desa" class="form-control" placeholder="desa" required>
+                <input type="text" name="kecamatan" class="form-control" placeholder="kecamatan" required>
 
                 <div class="form-group">
                     <label for="kota">Kota</label>

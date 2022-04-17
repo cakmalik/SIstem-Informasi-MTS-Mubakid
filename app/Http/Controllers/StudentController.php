@@ -108,11 +108,12 @@ class StudentController extends Controller
             }
             
             $generate = Malik::generateNis();
-            $email  = str()->snake($generate[0]) . '@mts2.bakid';
-            $emphone = $request->no_hp . '@mts2.bakid';
+            $email  = str()->snake($generate[0]) . '@mts2.com';
+            $emphone = $request->no_hp . '@mts2.com';
             $cek_email = User::where('email', $emphone)->first();
 
             if($cek_email==null){
+                dd('ga ada');
                 $user = User::create([
                     'name'=>$request->nama_lengkap,
                     'email'=>$emphone,

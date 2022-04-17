@@ -18,8 +18,9 @@
                 <th>#</th>
                 <th>Nama</th>
                 <th>Kota</th>
-                <th>Jenis kelamin</th>
+                <th>Jk</th>
                 <th>No Hp</th>
+                <th>Terdaftar</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                     <th>{{ $item->kota }}</th>
                     <th>{{ $item->jenis_kelamin }}</th>
                     <th>{{ $item->no_hp }}</th>
+                    <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
                     <th>
                         <div class="btn-group">
                             <a href="{{ route('students.show', $item->id) }}" type="button"
