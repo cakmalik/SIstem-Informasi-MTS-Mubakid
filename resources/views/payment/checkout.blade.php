@@ -44,33 +44,37 @@
                 <input type="hidden" name="bill_type_id" value="{{ Request::segment(2) }}">
                 <input type="hidden" name="method" value="tunaicash">
                 <a href="javascript:{}" onclick="onSubmit('1')">
-                    <div class="d-flex justify-content-between my-2">
+                    <div class="row d-flex justify-content-between">
                         <div class="col-1">
                             <img class="icon" src="{{ asset('assets/icons/favicon.png') }}">
                         </div>
-                        <div class="col-7">
-                            <strong>Bayar Tunai / Di Pondok</strong>
+                        <div class="col-7 ml-5">
+                            <strong>BAYAR DI PONDOK</strong><br>
+                            <small class="text-muted">Tanpa biaya admin</small>
                         </div>
-                        <span class="primary">></span>
+                        <span class="primary"><i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
             </form>
             <hr>
+            {{-- {{ dd($channels) }} --}}
             @foreach ($channels as $channel)
                 <form action="{{ route('pay.request') }}" method="POST" id="my_form{{ $channel->code }}">
                     @csrf
                     <input type="hidden" name="bill_type_id" value="{{ Request::segment(2) }}">
                     <input type="hidden" name="method" value="{{ $channel->code }}">
                     <a href=javascript:{} onclick="onSubmit('{{ $channel->code }}')">
-                        <div class="d-flex justify-content-between my-2">
-                            <div class="col-1">
+                        <div class="row d-flex justify-content-between my-2">
+                            <div class="col-2">
                                 <img style="width:50px;"
                                     src="{{ asset('assets/icons') . '/' . $channel->code . '.png' }}">
                             </div>
                             <div class="col-7">
-                                <strong>{{ $channel->name }}</strong>
+                                <strong>{{ $channel->name }}</strong> <br>
+                                <small class="text-muted">Biaya admin: Rp.
+                                    {{ number_format($channel->total_fee->flat) }}</small>
                             </div>
-                            <span class="primary">></span>
+                            <span class="primary"><i class="fas fa-arrow-right"></i></span>
                         </div>
                     </a>
                 </form>

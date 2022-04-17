@@ -78,8 +78,8 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        @if (Request::segment(1) == 'transaction')
-            <div class="span2">
+        @if (Request::segment(1) == 'transaction' && Request::segment(2) == 'detail')
+            <div class="btn fixed-bottom btn-flat btn-block">
                 <a href="{{ route('pay.change', $transaction->reference) }}" class="btn btn-primary btn-block">UBAH
                     METODE
                     PEMBAYARAN</a>

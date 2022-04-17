@@ -132,8 +132,7 @@ class TripayService{
         $response = curl_exec($curl);
         $error = curl_error($curl);
         
-        curl_close($curl);
-        
+        curl_close($curl);       
         $response=json_decode($response)->data;
         return $response?:$error;
         

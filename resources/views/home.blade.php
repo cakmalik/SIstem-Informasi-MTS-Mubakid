@@ -78,6 +78,10 @@
         @endif
     @endhasrole
     @hasrole('admin|super admin')
-        @include('comingsoon')
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                @include('comingsoon')
+            </div>
+        </div>
     @endhasrole
 @endsection

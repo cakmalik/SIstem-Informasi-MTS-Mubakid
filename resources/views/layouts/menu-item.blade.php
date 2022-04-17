@@ -5,4 +5,5 @@
     <x-menu :href="route('students.index')" :icon="'fas fa-user'" :text="'Students'" :active="request()->is('students')" />
     <x-menu :href="route('import.index')" :icon="'fas fa-solid fa-upload'" :text="'Import'" :active="request()->is('import')" />
     <x-menu :href="route('users.index')" :icon="'fas fa-user'" :text="'Users'" :active="request()->is('users')" />
+    <x-menu :href="route('pay.list', 'pendaftaran')" :icon="'fas fa-user'" :text="'Daftar pembayaran'" :active="request()->is('payment')" />
 @endhasrole
