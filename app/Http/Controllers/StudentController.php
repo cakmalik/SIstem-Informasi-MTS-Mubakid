@@ -114,7 +114,6 @@ class StudentController extends Controller
             $cek_email = User::where('email', $emphone)->first();
 
             if($cek_email==null){
-                dd('ga ada');
                 $user = User::create([
                     'name'=>$request->nama_lengkap,
                     'email'=>$emphone,
