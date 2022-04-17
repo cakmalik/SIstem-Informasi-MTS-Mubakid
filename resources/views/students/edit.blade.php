@@ -25,8 +25,9 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-sm">
+
                         <div class="form-group">
-                            <label for="nama_lengkap">Nama Lengkap</label>
+                            <label for="nama_lengkap">Nama ({{ $student->user->email }})</label>
                             <input type="text" name="nama_lengkap" value="{{ $student->nama_lengkap }}"
                                 class="form-control" id="nama_lengkap" aria-describedby="nama_lengkap"
                                 placeholder="Nama Lengkap" @if ($detail_mode) readonly @endif>

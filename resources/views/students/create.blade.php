@@ -30,21 +30,91 @@
             <div class="separator my-3">Keluarga</div>
             <div class="row">
                 <div class="col">
-                    <input type="text" name="status_keluarga" class="form-control" placeholder="status_keluarga">
-                    <input type="text" name="anak_ke" class="form-control" placeholder="anak_ke">
+                    <select class="form-control" name="status_keluarga" id="status_keluarga">
+                        <option value="" selected disabled>Pilih Status Keluarga</option>
+                        <option>Anak Kandung</option>
+                        <option>Anak Tiri</option>
+                        <option>Anak Angkat</option>
+                        <option>Anak Asuh</option>
+                    </select>
+                    <input type="text" name="anak_ke" class="form-control" placeholder="anak_ke ... dari ....">
                     <input type="text" name="nama_ayah" class="form-control" placeholder="nama_ayah">
                     <input type="text" name="tempatlahir_ayah" class="form-control" placeholder="tempat_lahir_ayah">
                     <input type="date" name="tanggallahir_ayah" class="form-control" placeholder="tanggal_lahir_ayah">
-                    <input type="text" name="pendidikan_ayah" class="form-control" placeholder="pendidikan_ayah">
-                    <input type="text" name="pekerjaan_ayah" class="form-control" placeholder="pekerjaan_ayah">
+                    <select name="pendidikan_ayah" id="pendidikan_ayah" class="form-control">
+                        <option value="" selected disabled>Pilih pendidikan ayah</option>
+                        <option>Tidak Sekolah</option>
+                        <option>Putus SD</option>
+                        <option>SD Sederajat</option>
+                        <option>SMP Sederajat</option>
+                        <option>SMA Sederajat</option>
+                        <option>D1</option>
+                        <option>D2</option>
+                        <option>D3</option>
+                        <option>D4/S1</option>
+                        <option>S2</option>
+                        <option>S3</option>
+                        <option>Lainnya</option>
+                    </select>
+                    <select name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control">
+                        <option value="" selected disabled>Pekerjaan Ibu</option>
+                        <option>Tidak Bekerja</option>
+                        <option>Nelayan</option>
+                        <option>Petani</option>
+                        <option>Peternak</option>
+                        <option>PNS/TNI/Polri</option>
+                        <option>Karyawan Swasta</option>
+                        <option>Pedagang Kecil</option>
+                        <option>Pedagang Besar</option>
+                        <option>Wiraswasta</option>
+                        <option>Wirausaha</option>
+                        <option>Buruh</option>
+                        <option>Pensiunan</option>
+                        <option>Tenaga Kerja Indonesia</option>
+                        <option>Tidak dapat diterapkan</option>
+                        <option>Sudah Meninggal</option>
+                        <option>Lainnya</option>
+                    </select>
                 </div>
                 <div class="col">
                     <input type="text" name="penghasilan" class="form-control" placeholder="penghasilan">
                     <input type="text" name="nama_ibu" class="form-control" placeholder="nama_ibu">
                     <input type="text" name="tempatlahir_ibu" class="form-control" placeholder="tanggal_lahir_ibu">
                     <input type="date" name="tanggallahir_ibu" class="form-control" placeholder="tanggal_lahir_ibu">
-                    <input type="text" name="pendidikan_ibu" class="form-control" placeholder="pendidikan_ibu">
-                    <input type="text" name="pekerjaan_ibu" class="form-control" placeholder="pekerjaan_ibu">
+                    <select name="pendidikan_ibu" id="pendidikan_ibu" class="form-control">
+                        <option value="" selected disabled>Pilih pendidikan Ibu</option>
+                        <option>Tidak Sekolah</option>
+                        <option>Putus SD</option>
+                        <option>SD Sederajat</option>
+                        <option>SMP Sederajat</option>
+                        <option>SMA Sederajat</option>
+                        <option>D1</option>
+                        <option>D2</option>
+                        <option>D3</option>
+                        <option>D4/S1</option>
+                        <option>S2</option>
+                        <option>S3</option>
+                        <option>Lainnya</option>
+                    </select>
+                    <select name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control">
+                        <option value="" selected disabled>Pekerjaan Ibu</option>
+                        <option>Tidak Bekerja</option>
+                        <option>Nelayan</option>
+                        <option>Petani</option>
+                        <option>Peternak</option>
+                        <option>PNS/TNI/Polri</option>
+                        <option>Karyawan Swasta</option>
+                        <option>Pedagang Kecil</option>
+                        <option>Pedagang Besar</option>
+                        <option>Wiraswasta</option>
+                        <option>Wirausaha</option>
+                        <option>Buruh</option>
+                        <option>Pensiunan</option>
+                        <option>Tenaga Kerja Indonesia</option>
+                        <option>Tidak dapat diterapkan</option>
+                        <option>Sudah Meninggal</option>
+                        <option>Lainnya</option>
+                    </select>
                 </div>
             </div>
             <div class="separator my-3">Alamat</div>
@@ -53,7 +123,7 @@
                 <input type="text" name="desa" class="form-control" placeholder="desa">
                 <input type="text" name="kecamatan" class="form-control" placeholder="kecamatan">
 
-                <div class="form-group mt-3">
+                <div class="form-group">
                     <label for="kota">Kota</label>
                     <select class="selectpicker form-control" data-live-search="true" name="kota" id="kota"
                         value="{{ old('kota') }}">
@@ -63,7 +133,7 @@
                     </select>
                 </div>
 
-                <div class="form-group mt-3">
+                <div class="form-group">
                     <label for="provinsi">Provinsi</label>
                     <select class="selectpicker form-control" data-live-search="true" name="provinsi" id="provinsi"
                         value="{{ old('provinsi') }}">

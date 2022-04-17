@@ -108,12 +108,25 @@ class StudentController extends Controller
             }
             
             $generate = Malik::generateNis();
-            $email  = str()->snake($generate[0]) . '@mts2.com';
-            $user = User::create([
-                'name'=>$request->nama_lengkap,
-                'email'=>$email,
-                'password'=>bcrypt('password'),
-            ]);
+            $email  = str()->snake($generate[0]) . '@mts2.bakid';
+            $emphone = $request->no_hp . '@mts2.bakid';
+            $cek_email = User::where('email', $emphone)->first();
+
+            if($cek_email==null){
+                $user = User::create([
+                    'name'=>$request->nama_lengkap,
+                    'email'=>$emphone,
+                    'password'=>bcrypt('password'),
+                ]);
+            }else{
+                $user = User::create([
+                    'name'=>$request->nama_lengkap,
+                    'email'=>$email,
+                    'password'=>bcrypt('password'),
+                ]);
+            }
+
+          
             $data['user_id'] = $user->id;
             $data['nis']= $generate[0];
             $data['urutan']= $generate[1];
@@ -161,7 +174,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        Alert::success('OK', 'Kamu baik baik saja');
+        Alert::success('Baik', 'Semoga Kamu baik baik saja');
         return back();
     }
     public function storeImgSiswa($file)
