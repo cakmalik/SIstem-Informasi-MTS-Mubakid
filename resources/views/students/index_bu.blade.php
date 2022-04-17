@@ -1,6 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Students')
+<x-datatables />
 @section('content')
-    <x-datatables />
     <div class=" d-flex justify-content-between mb-2">
         <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-default">
             <i class="fas fa-plus"></i> Tambah Siswa
@@ -35,7 +36,6 @@
                         <div class="btn-group">
                             <a href="{{ route('students.show', $item->id) }}" type="button"
                                 class="btn btn-info">Detail</a>
-
                             <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
                                 data-toggle="dropdown" aria-expanded="false">
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -46,19 +46,20 @@
                                     href="{{ route('pdf.biodata', $item->id) }}">Biodata</a>
                                 <a class="dropdown-item" target="_blank" href="{{ route('pdf.mou', $item->id) }}">MoU</a>
                                 {{-- <a class="dropdown-item" href="{{ route('pdf.biodata') }}">Cetak Kts</a> --}}
-                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider">
+                                </div>
                                 <form method="POST" action="{{ route('students.destroy', $item->id) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm"
-                                        data-toggle="tooltip" title='Delete'> <i class="fas fa-trash"></i> Hapus</button>
+                                        data-toggle="tooltip" title='Delete'>Delete</button>
                                 </form>
                             </div>
+
                         </div>
                     </th>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{-- @include('layouts.partials.confirm') --}}
 @endsection

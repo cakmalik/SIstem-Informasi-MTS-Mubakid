@@ -161,7 +161,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        Alert::success('OK', 'Data berhasil dihapus');
+        Alert::success('OK', 'Kamu baik baik saja');
         return back();
     }
     public function storeImgSiswa($file)

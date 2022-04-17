@@ -1,0 +1,5 @@
+jangan menaruh js di bawahnya section akhir secara langsung 
+contoh:
+@endsection (ini end section content)
+dan dibawahnya sini di taruh <script> maka dia ga jalan scriptnya.
+makanya jangan hardcode. use push aja lah. wkwkkw
