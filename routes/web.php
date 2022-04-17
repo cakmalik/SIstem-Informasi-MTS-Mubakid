@@ -16,11 +16,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('sendWa',function ()
-// {
-//     Malik::sendWa(1,'wa_success_reg');
-//     return 'berhasil';
-// });
+Route::get('tesWa',function ()
+{
+    Malik::sendWa(37);
+    return 'berhasil';
+});
 
 Auth::routes();
 

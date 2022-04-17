@@ -5,8 +5,8 @@
 @section('content')
     <div class="d-lg-flex justify-content-between">
         <div>
-            <a href="{{ route('pay.list', 'online') }}" class="mt-2 badge bg-info">Virtual</a>
-            <a href="{{ route('pay.list', 'offline') }}" class="mt-2 badge bg-primary">Offline/Tunai</a>
+            <a href="{{ route('pay.list', 'online') }}" class="btn btn-info btn-sm">Virtual</a>
+            <a href="{{ route('pay.list', 'offline') }}" class="btn btn-secondary btn-sm">Offline/Tunai</a>
         </div>
     </div>
     <div class="mt-3">
