@@ -43,7 +43,7 @@ class Malik {
             $no_wa = Str::substr($no_wa, 1);
             $no_wa = '62'.$no_wa;
             // $message = DatabaseSetting::where('name',$message)->first()->value;
-            $message = "Assalamualaikum. Wr. Wb \n Terimakasih Ayah/Ibu yang telah melakukan registrasi untuk ananda #nama di MTs. Miftahul ulum 2 Banyaputih Kidul Jatiroto Lumajang.\nBerikut kami lampirkan informasi login akun SIM (Sistem Informasi Madrasah). yang Insyaallah akan dapat digunakan untuk memantau kegiatan ananda selama di Madrasah. Presensi kehadiran, Rekap Izin, Hasil Ujian, dan rekap pembayaran. \n\nEmail : #email  \n\nTerimakasih atas perhatiannya. \n\n_(Wa ini dikirim otomatis. untuk informasi lebih lanjut dapat menghubungi 081336163361)_";
+            $message = "Assalamualaikum. Wr. Wb \nTerimakasih Ayah/Ibu yang telah melakukan registrasi untuk ananda *#nama* di MTs. Miftahul ulum 2 Banyaputih Kidul Jatiroto Lumajang.\nBerikut kami lampirkan informasi login akun SIM (Sistem Informasi Madrasah). yang Insyaallah akan dapat digunakan untuk memantau kegiatan ananda selama di Madrasah. Presensi kehadiran, Rekap Izin, Hasil Ujian, dan rekap pembayaran. \n\nEmail : #email  \n\nTerimakasih atas perhatiannya. \n\n_(Wa ini dikirim otomatis. untuk informasi lebih lanjut dapat menghubungi 081336163361)_";
             $yang_mau_diganti = ['#nama','#email'];
             $ganti_dengan = [$student->nama_lengkap,$student->user->email];
             $message = str_replace($yang_mau_diganti, $ganti_dengan, $message);
