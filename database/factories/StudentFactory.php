@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,7 +27,8 @@ class StudentFactory extends Factory
             'kk'=>$this->faker->numberBetween(10000000000,99999999999),
             'tempat_lahir'=>$this->faker->city(),
             'tanggal_lahir'=>$this->faker->date(),
-            'jenis_kelamin'=>$this->faker->randomElement(['Laki-laki','Perempuan']),
+            'jenis_kelamin'=>$this->faker->randomElement(['Perempuan']),
+            // 'jenis_kelamin'=>$this->faker->randomElement(['Laki-laki','Perempuan']),
             'alamat'=>$this->faker->citySuffix(),
             'desa'=>$this->faker->address(),
             'kecamatan'=>$this->faker->citySuffix(),
@@ -66,10 +68,11 @@ class StudentFactory extends Factory
             'no_kks_kps'=>$this->faker->name,
             'no_kip'=>$this->faker->name,
             
-            // 'foto_siswa'=>$this->faker->name,
-            // 'foto_ortu'=>$this->faker->name,
-            'status'=>$this->faker->randomElement(['baru','aktif']),
             'urutan'=>$this->faker->numberBetween(1111,9999),
+            'status'=>'baru',
+            // 'grade_id'=>11,  
+            // 'status'=>$this->faker->randomElement(['baru','aktif']),
+            // 'grade_id'=>$this->faker->randomElement(Grade::all())['id'],
             
             
         ];

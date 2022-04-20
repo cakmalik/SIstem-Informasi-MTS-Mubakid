@@ -39,7 +39,7 @@
                     <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
                     <th>
                         <div class="btn-group">
-                            @if (request()->is('student/status/baru'))
+                            @if ($item->status=='baru')
                                 <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
                                     title="Verifikasi" type="button" class="btn btn-default"> <i class="fas fa-check"></i>
                                 </a>

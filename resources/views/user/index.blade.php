@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="alert alert-info alet-dismissable" id="alertuser">
+    <div class="alert alert-danger alet-dismissable" id="alertuser">
         Menghapus akun beresiko Siswa tidak dapat login ke akunnya.
         <a href="#" onclick="sayaMemahami()" type="button" data-dismiss="alert">Saya Memahaminya</a>
     </div>

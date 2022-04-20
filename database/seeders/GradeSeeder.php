@@ -22,7 +22,7 @@ class GradeSeeder extends Seeder
         for($i=0;$i<count($putra);$i++){
             DB::table('grades')->insert([
                 'name' => '7'. $putra[$i],
-                'description' => 'Rombel Putra '.$i+1,
+                'description' => 'Rombel Laki-laki '.$i+1,
                 'qty' => 30,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -31,7 +31,7 @@ class GradeSeeder extends Seeder
         for ($i=0;$i<count($putri);$i++){
             DB::table('grades')->insert([
                 'name' => '7'. $putri[$i],
-                'description' => 'Rombel Putri '.$i+1,
+                'description' => 'Rombel Perempuan '.$i+1,
                 'qty' => 30,
                 'created_at' => now(),
                 'updated_at' => now()

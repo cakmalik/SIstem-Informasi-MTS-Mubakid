@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,9 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => User::factory()->create()->id,
+            'grade_id' => $this->faker->randomElement(Grade::all())['id'],
             'name' => $this->faker->name,
-            'grade_id' => null,
         ];
     }
 }

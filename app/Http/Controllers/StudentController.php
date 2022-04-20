@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Grade;
 use App\Helpers\Malik;
 use App\Models\Student;
 use App\Models\BillType;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -200,8 +202,36 @@ class StudentController extends Controller
     }
     public function verify(Student $student)
     {
+        $a = DB::table('students')
+        ->where('status','aktif')
+        ->where('jenis_kelamin', $student->jenis_kelamin)
+        ->whereYear('created_at', date('Y'))
+        ->select('grade_id', DB::raw('count(*) as total'))
+        ->groupBy('grade_id')
+        ->latest('grade_id')
+        ->first();
+
+        if($a->grade_id ==null){
+            if($student->jenis_kelamin == 'Perempuan'){
+                $grade_id = Grade::where('description','like','%Putri%')->first();
+            }else{
+                $grade_id = Grade::where('description','like','%Putra%')->first();
+            }
+            $student->update(['grade_id'=>$grade_id->id]);
+            $grade_name = $grade_id->name;
+        }else{
+            $jml_kuota = $this->kuotaKelas($a->grade_id);
+            if ($a->total < $jml_kuota) {
+                $student->update(['grade_id'=>$a->grade_id]);
+            }else{
+                $student->update(['grade_id'=>$a->grade_id+1]);
+            }
+            $grade_name = Grade::findOrFail($a->grade_id)->name;
+        }
+
         $student->update(['status'=>'aktif']);
-        Alert::success('Selamat', 'Data siswa berhasil diverifikasi');
+
+        Alert::success('Kelas : '. $grade_name, 'Data siswa berhasil diverifikasi');
         return back();
     }
     public function status($status)
@@ -212,5 +242,9 @@ class StudentController extends Controller
         $kota = $malik->getKota();
         $prov = $malik->getProvinsi();
         return view('students.index',compact('collection','status','nominal','kota','prov'));
+    }
+    public function kuotaKelas($grade_id)
+    {
+        return Grade::findOrFail($grade_id)->qty;
     }
 }

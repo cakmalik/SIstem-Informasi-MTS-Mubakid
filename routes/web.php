@@ -68,5 +68,6 @@ Route::controller(ImportExportController::class)->name('export.')->group(functio
 });
 
 Route::resource('users', UserController::class);
+Route::post('grades/apply',[GradeController::class,'apply'])->name('grades.apply');
 Route::resource('grades', GradeController::class);
 Route::resource('teachers', TeacherController::class);

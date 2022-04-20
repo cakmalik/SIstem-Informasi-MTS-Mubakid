@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGradeRequest;
-use App\Http\Requests\UpdateGradeRequest;
 use App\Models\Grade;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreGradeRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\UpdateGradeRequest;
 
 class GradeController extends Controller
 {
@@ -16,7 +19,8 @@ class GradeController extends Controller
     public function index()
     {
         $grades = Grade::all();
-        return view('grades.index', compact('grades'));
+        $teachers = Teacher::all();
+        return view('grades.index', compact('grades', 'teachers'));
     }
 
     /**
@@ -37,7 +41,9 @@ class GradeController extends Controller
      */
     public function store(StoreGradeRequest $request)
     {
-        //
+        Grade::create($request->all());
+        Alert::success('Success', 'Grade has been added');
+        return redirect()->route('grades.index');
     }
 
     /**
@@ -82,6 +88,17 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        $grade->delete();
+        Alert::success('Success', 'Grade has been deleted');
+        return redirect()->route('grades.index');
+    }
+    public function apply(Request $request)
+    {
+        $request->validate([
+            'grade_id' => 'required',
+            'teacher_id' => 'required',
+        ]);
+        $grade = Grade::find($request->grade_id)->update(['wali_kelas' => $request->teacher_id]);
+        return redirect()->back()->with('success', 'Grade has been assigned to teacher');
     }
 }

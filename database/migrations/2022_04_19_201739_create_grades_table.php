@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->integer('teacher_id')->nullable();
             $table->string('name');
+            $table->string('wali_kelas')->nullable();
             $table->string('description')->nullable();
             $table->integer('qty')->nullable();
             $table->timestamps();
