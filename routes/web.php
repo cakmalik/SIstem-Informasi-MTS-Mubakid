@@ -1,26 +1,24 @@
 <?php
 
 use App\Helpers\Malik;
-use App\Http\Controllers\ImportExportController;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ImportExportController;
 use App\Http\Controllers\Payment\TransactionController;
 use App\Http\Controllers\Payment\TripayCallbackController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\TeacherController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tesWa',function ()
-{
-    Malik::sendWa(37);
-    return 'berhasil';
-});
 
 Auth::routes();
 
@@ -48,7 +46,12 @@ Route::group(['middleware'=>['role:siswa|admin|super admin']], function ()
 });
 Route::post('callback',[TripayCallbackController::class,'handle']);
 
-Route::get('student/status/{status}', [StudentController::class, 'status'])->name('students.status');
+Route::controller(StudentController::class)->name('students.')->group(function ()
+{
+    Route::get('/student/verify/{student}','verify')->name('verify');
+    Route::get('/student/status/{status}','status')->name('status');
+});
+
 Route::resource('students', StudentController::class);
 Route::group(['middleware'=>['role:admin|super admin']], function ()
 {
@@ -65,3 +68,5 @@ Route::controller(ImportExportController::class)->name('export.')->group(functio
 });
 
 Route::resource('users', UserController::class);
+Route::resource('grades', GradeController::class);
+Route::resource('teachers', TeacherController::class);

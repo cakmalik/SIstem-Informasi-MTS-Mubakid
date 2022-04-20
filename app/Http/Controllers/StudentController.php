@@ -19,7 +19,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-    $collection = Student::orderBy('created_at', 'desc')->get();
+        $collection = Student::where('status','baru')->orderBy('created_at', 'desc')->get();
         $nominal = BillType::where('name','pendaftaran')->first()->amount;
         $malik=  new Malik();
         $kota = $malik->getKota();
@@ -90,7 +90,7 @@ class StudentController extends Controller
 
             $student = Student::create($data);
             Auth::user()->syncRoles('siswa');
-            Malik::sendWa($student->id);
+            // Malik::sendWa($student->id);
             Alert::success('Selamat', 'Data berhasil dikirim');
             return redirect()->route('home');
         }else{
@@ -134,7 +134,7 @@ class StudentController extends Controller
             $transaction = new TransactionController();
             $transaction->storeManual($student->id,$request->status_pembayaran);
             $user->assignRole('siswa');
-            Malik::sendWa($student->id);
+            // Malik::sendWa($student->id);
             Alert::success('Selamat', 'Siswa baru berhasil ditambah');
             return redirect()->route('students.index');
         }
@@ -197,5 +197,20 @@ class StudentController extends Controller
         $file_type  = $file->getClientOriginalExtension();
         $filePath   = 'storage/'.$path . $fileName_wali;
         return $fileName_wali;
+    }
+    public function verify(Student $student)
+    {
+        $student->update(['status'=>'aktif']);
+        Alert::success('Selamat', 'Data siswa berhasil diverifikasi');
+        return back();
+    }
+    public function status($status)
+    {
+        $collection = Student::where('status',$status)->get();
+        $nominal = BillType::where('name','pendaftaran')->first()->amount;
+        $malik=  new Malik();
+        $kota = $malik->getKota();
+        $prov = $malik->getProvinsi();
+        return view('students.index',compact('collection','status','nominal','kota','prov'));
     }
 }

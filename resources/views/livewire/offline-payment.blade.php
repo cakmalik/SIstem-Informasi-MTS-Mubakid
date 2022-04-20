@@ -6,12 +6,12 @@
         <thead>
             <tr>
                 <th>Kode Transaksi</th>
-                <th>Nama</th>
+                {{-- <th>Nama</th> --}}
                 <th>Nominal</th>
                 <th>Status</th>
                 <th>Untuk</th>
-                <th>Aksi</th>
                 <th>Tgl Request</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -26,13 +26,14 @@
                 @endphp
                 <tr>
                     <td>{{ $item->reference }}</td>
-                    <td>{{ $item->user->nama_lengkap }}</td>
+                    {{-- <td>{{ $item->user->name }}</td> --}}
                     <td>{{ $item->total_amount }}</td>
                     <td>{!! $status !!}</td>
                     <td>{{ $item->bill_type->name }}</td>
                     <td>{{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMM Y H:m') }}</td>
                     <td>
                         <button wire:click="bayar({{ $item->id }})" class="btn badge bg-primary">Bayar</button>
+                        {{-- <a href="{{ route('students.show', $item->user_id) }}">Cek siswa</a> --}}
                     </td>
                 </tr>
             @endforeach

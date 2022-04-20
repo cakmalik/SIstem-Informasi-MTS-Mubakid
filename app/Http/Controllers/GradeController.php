@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTeacherRequest;
-use App\Http\Requests\UpdateTeacherRequest;
-use App\Models\Teacher;
+use App\Http\Requests\StoreGradeRequest;
+use App\Http\Requests\UpdateGradeRequest;
+use App\Models\Grade;
 
-class TeacherController extends Controller
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-
-        return view('teachers.index', compact('teachers'));
+        $grades = Grade::all();
+        return view('grades.index', compact('grades'));
     }
 
     /**
@@ -33,10 +32,10 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTeacherRequest  $request
+     * @param  \App\Http\Requests\StoreGradeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTeacherRequest $request)
+    public function store(StoreGradeRequest $request)
     {
         //
     }
@@ -44,10 +43,10 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Teacher  $teacher
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show(Grade $grade)
     {
         //
     }
@@ -55,10 +54,10 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Teacher  $teacher
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit(Grade $grade)
     {
         //
     }
@@ -66,11 +65,11 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTeacherRequest  $request
-     * @param  \App\Models\Teacher  $teacher
+     * @param  \App\Http\Requests\UpdateGradeRequest  $request
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTeacherRequest $request, Teacher $teacher)
+    public function update(UpdateGradeRequest $request, Grade $grade)
     {
         //
     }
@@ -78,10 +77,10 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Teacher  $teacher
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Grade $grade)
     {
         //
     }

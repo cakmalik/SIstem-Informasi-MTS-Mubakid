@@ -6,13 +6,6 @@
         <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-default">
             <i class="fas fa-plus"></i> Tambah
         </button>
-        <div>
-            <a href="{{ route('students.status', 'baru') }}"
-                class="mx-1 btn btn-flat @if (Request::segment(3) == 'baru') btn-info @else btn-outline-info @endif btn-sm">Baru</a>
-            <a href="{{ route('students.status', 'aktif') }}"
-                class="btn btn-flat @if (Request::segment(3) == 'aktif') btn-info @else btn-outline-info @endif btn-sm">Aktif</a>
-        </div>
-
 
     </div>
     <table id="datatable" class="display" style="width:100%">
@@ -20,23 +13,16 @@
             <tr>
                 <th>#</th>
                 <th>Nama</th>
-                <th>Kota</th>
-                <th>Jk</th>
-                <th>No Hp</th>
-                <th>Terdaftar</th>
+                {{-- <th>Guru</th> --}}
                 <th>Aksi</th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach ($collection as $item)
+            @foreach ($teachers as $item)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <th>{{ $item->nama_lengkap }}</th>
-                    <th>{{ $item->kota }}</th>
-                    <th>{{ $item->jenis_kelamin }}</th>
-                    <th>{{ $item->no_hp }}</th>
-                    <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
+                    <th>{{ $item->name }}</th>
                     <th>
                         <div class="btn-group">
                             @if (request()->is('student/status/baru'))
@@ -51,11 +37,6 @@
                             <div class="dropdown-menu">
                                 <a href="{{ route('students.show', $item->id) }}" class="dropdown-item">Detail</a>
                                 <a class="dropdown-item" href="{{ route('students.edit', $item->id) }}">Edit</a>
-                                <a class="dropdown-item" target="_blank"
-                                    href="{{ route('pdf.biodata', $item->id) }}">Biodata</a>
-                                <a class="dropdown-item" target="_blank"
-                                    href="{{ route('pdf.mou', $item->id) }}">MoU</a>
-                                {{-- <a class="dropdown-item" href="{{ route('pdf.biodata') }}">Cetak Kts</a> --}}
                                 <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('students.destroy', $item->id) }}">
                                     @csrf
@@ -71,5 +52,5 @@
         </tbody>
     </table>
     {{-- @include('layouts.partials.confirm') --}}
-    @include('students.create')
+    {{-- @include('students.create') --}}
 @endsection

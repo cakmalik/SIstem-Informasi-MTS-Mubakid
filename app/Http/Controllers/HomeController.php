@@ -77,4 +77,8 @@ class HomeController extends Controller
         }
         return $isNewStudent;
     }
+    public function tes()
+    {
+       
+    }
 }
