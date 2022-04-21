@@ -63,6 +63,8 @@ class HomeController extends Controller
                 $next_step = false;
             }
             return view('home',compact('next_step', 'link'));
+        }elseif(auth()->user()->hasRole('guru')){
+            return view('home');
         }else{
             return view('home');
         }
@@ -77,8 +79,8 @@ class HomeController extends Controller
         }
         return $isNewStudent;
     }
-    public function tes()
+    public function teacherHome()
     {
-       
+        return view('teachers.home');
     }
 }

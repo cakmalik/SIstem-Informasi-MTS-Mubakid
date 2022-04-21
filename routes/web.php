@@ -23,6 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/teachers_home', [App\Http\Controllers\HomeController::class, 'teacherHome'])->name('home.teacher');
 
 Route::controller(PDFController::class)->name('pdf.')->group(function ()
 {
@@ -33,29 +34,31 @@ Route::controller(PDFController::class)->name('pdf.')->group(function ()
 // NOTE:PAYMENT
 Route::group(['middleware'=>['role:siswa|admin|super admin']], function ()
 {
-   Route::controller(TransactionController::class)->group(function ()
-   {
-       Route::post('/transaction/cash','payCash')->name('pay.cash');
-       Route::get('/transaction/detail/{reference}','show')->name('pay.detail');
-       Route::get('/transaction/change-method/{reference}','changeMethod')->name('pay.change');
-       Route::get('/transaction/list/{method}','daftarTransaksi')->name('pay.list');
-       Route::get('/checkout/{for}','checkout')->name('pay.checkout');
-       Route::post('/checkout_proses','store')->name('pay.request');   
-       Route::get('/guest/bills','guestBills')->name('guest.bills');
-   });
+    Route::controller(TransactionController::class)->group(function ()
+    {
+        Route::post('/transaction/cash','payCash')->name('pay.cash');
+        Route::get('/transaction/detail/{reference}','show')->name('pay.detail');
+        Route::get('/transaction/change-method/{reference}','changeMethod')->name('pay.change');
+        Route::get('/transaction/list/{method}','daftarTransaksi')->name('pay.list');
+        Route::get('/checkout/{for}','checkout')->name('pay.checkout');
+        Route::post('/checkout_proses','store')->name('pay.request');   
+        Route::get('/guest/bills','guestBills')->name('guest.bills');
+    });
 });
 Route::post('callback',[TripayCallbackController::class,'handle']);
 
-Route::controller(StudentController::class)->name('students.')->group(function ()
-{
-    Route::get('/student/verify/{student}','verify')->name('verify');
-    Route::get('/student/status/{status}','status')->name('status');
-});
 
-Route::resource('students', StudentController::class);
 Route::group(['middleware'=>['role:admin|super admin']], function ()
 {
+    Route::controller(StudentController::class)->name('students.')->group(function ()
+    {
+        Route::get('/student/verify/{student}','verify')->name('verify');
+        Route::get('/student/status/{status}','status')->name('status');
+    });
+    Route::resource('students', 'StudentsController', ['except' => ['index', 'show']]);
 });
+Route::resource('students', 'StudentsController', ['only' => ['index', 'show']]);
+
 
 Route::controller(ImportExportController::class)->name('import.')->group(function ()
 {

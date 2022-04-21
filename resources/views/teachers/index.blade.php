@@ -3,9 +3,9 @@
     <x-datatables />
 
     <div class="mb-2 d-flex justify-content-between">
-        <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-default">
+        <a href="{{ route('teachers.create') }}" class="btn btn-outline-info btn-sm btn-flat">
             <i class="fas fa-plus"></i> Tambah
-        </button>
+        </a>
 
     </div>
     <table id="datatable" class="display" style="width:100%">

@@ -1,0 +1,4 @@
+            $roles = $user->getRoleNames();
+            $user->removeRole($roles);
+            $user->roles()->detach();
+            $user->syncRoles('guru');

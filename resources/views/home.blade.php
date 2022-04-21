@@ -77,7 +77,7 @@
             </div>
         @endif
     @endhasrole
-    @hasrole('admin|super admin')
+    @hasrole('admin|super admin|guru')
         <div class="container">
             <div class="row d-flex justify-content-center">
                 @include('comingsoon')

@@ -1,0 +1,5 @@
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('post', 'PostsController', ['except' => ['index', 'show']]);
+});
+
+Route::resource('post', 'PostsController', ['only' => ['index', 'show']]);

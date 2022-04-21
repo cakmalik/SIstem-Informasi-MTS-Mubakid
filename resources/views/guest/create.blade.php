@@ -106,7 +106,8 @@
 <body>
     @include('sweetalert::alert')
     <nav class="navbar navbar-dark bg-custom-2 justify-content-center">
-        <a class="navbar-brand text-center" href="#a">PENDAFTARAN MTS-MU 2</a>
+        <span class="navbar-brand text-center" href="#a">PENDAFTARAN <a href="{{ route('teachers.create') }}"
+                style="color: white; text-decoration:none">MTS</a>-MU 2</span>
     </nav>
     <form action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
