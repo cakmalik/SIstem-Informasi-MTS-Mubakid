@@ -3,7 +3,6 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Silahkan Login dahulu</p>
-
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -13,11 +12,6 @@
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Password" name="password">

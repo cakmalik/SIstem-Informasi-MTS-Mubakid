@@ -40,11 +40,11 @@
                     <th>
                         <div class="btn-group">
                             @if ($item->status == 'baru')
-                                {{-- <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
-                                    title="Verifikasi" type="button" class="btn btn-default"> <i class="fas fa-check"></i>
-                                </a> --}}
+                                <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
+                                    title="Verifikasi" type="button" class="btn btn-success"> <i class="fas fa-check"></i>
+                                </a>
                             @endif
-                            <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                            <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split"
                                 data-toggle="dropdown" aria-expanded="false">
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>

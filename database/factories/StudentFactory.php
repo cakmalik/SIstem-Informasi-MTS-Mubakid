@@ -27,7 +27,7 @@ class StudentFactory extends Factory
             'kk'=>$this->faker->numberBetween(10000000000,99999999999),
             'tempat_lahir'=>$this->faker->city(),
             'tanggal_lahir'=>$this->faker->date(),
-            'jenis_kelamin'=>$this->faker->randomElement(['Perempuan']),
+            'jenis_kelamin'=>$this->faker->randomElement(['Laki-laki']),
             // 'jenis_kelamin'=>$this->faker->randomElement(['Laki-laki','Perempuan']),
             'alamat'=>$this->faker->citySuffix(),
             'desa'=>$this->faker->address(),

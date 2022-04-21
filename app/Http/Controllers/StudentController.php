@@ -89,14 +89,14 @@ class StudentController extends Controller
             
             $data['nis']= Malik::generateNis()[0];
             $data['urutan']= Malik::generateNis()[1];
-
+            
             $student = Student::create($data);
             Auth::user()->syncRoles('siswa');
             // Malik::sendWa($student->id);
             Alert::success('Selamat', 'Data berhasil dikirim');
             return redirect()->route('home');
         }else{
-
+            
             $validatedData = $request->validate([
                 'foto' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
                 'foto_wali' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -114,7 +114,7 @@ class StudentController extends Controller
             $email  = str()->snake($generate[0]) . '@mts2.com';
             $emphone = $request->no_hp . '@mts2.com';
             $cek_email = User::where('email', $emphone)->first();
-
+            
             if($cek_email==null){
                 $user = User::create([
                     'name'=>$request->nama_lengkap,
@@ -128,7 +128,7 @@ class StudentController extends Controller
                     'password'=>bcrypt('password'),
                 ]);
             }
-          
+            
             $data['user_id'] = $user->id;
             $data['nis']= $generate[0];
             $data['urutan']= $generate[1];
@@ -169,7 +169,7 @@ class StudentController extends Controller
     
     public function update(UpdateStudentRequest $request, Student $student)
     {
-       $student->update($request->all());
+        $student->update($request->all());
         Alert::success('Selamat', 'Data berhasil diubah');
         return redirect()->route('students.index');
     }
@@ -182,13 +182,13 @@ class StudentController extends Controller
     }
     public function storeImgSiswa($file)
     {
-            $path = 'foto_siswa/';
-            $fileName_santri   = time() . $file->getClientOriginalName();
-            Storage::disk('public')->put($path . $fileName_santri, File::get($file));
-            $file_name  = $file->getClientOriginalName();
-            $file_type  = $file->getClientOriginalExtension();
-            $filePath   = 'storage/'.$path . $fileName_santri;
-            return $fileName_santri;
+        $path = 'foto_siswa/';
+        $fileName_santri   = time() . $file->getClientOriginalName();
+        Storage::disk('public')->put($path . $fileName_santri, File::get($file));
+        $file_name  = $file->getClientOriginalName();
+        $file_type  = $file->getClientOriginalExtension();
+        $filePath   = 'storage/'.$path . $fileName_santri;
+        return $fileName_santri;
     }
     public function storeImgWali($file)
     {
@@ -210,16 +210,12 @@ class StudentController extends Controller
         ->groupBy('grade_id')
         ->latest('grade_id')
         ->first();
-
-        if($a->grade_id ==null){
-            if($student->jenis_kelamin == 'Perempuan'){
-                $grade_id = Grade::where('description','like','%Putri%')->first();
-            }else{
-                $grade_id = Grade::where('description','like','%Putra%')->first();
-            }
+        
+        if($a==null){
+            $grade_id = Grade::where('description','like','%'.$student->jenis_kelamin.'%')->first();
             $student->update(['grade_id'=>$grade_id->id]);
             $grade_name = $grade_id->name;
-        }else{
+        }else{  
             $jml_kuota = $this->kuotaKelas($a->grade_id);
             if ($a->total < $jml_kuota) {
                 $student->update(['grade_id'=>$a->grade_id]);
@@ -228,9 +224,9 @@ class StudentController extends Controller
             }
             $grade_name = Grade::findOrFail($a->grade_id)->name;
         }
-
+        
         $student->update(['status'=>'aktif']);
-
+        
         Alert::success('Kelas : '. $grade_name, 'Data siswa berhasil diverifikasi');
         return back();
     }
