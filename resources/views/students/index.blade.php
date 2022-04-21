@@ -39,10 +39,10 @@
                     <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
                     <th>
                         <div class="btn-group">
-                            @if ($item->status=='baru')
-                                <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
+                            @if ($item->status == 'baru')
+                                {{-- <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
                                     title="Verifikasi" type="button" class="btn btn-default"> <i class="fas fa-check"></i>
-                                </a>
+                                </a> --}}
                             @endif
                             <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
                                 data-toggle="dropdown" aria-expanded="false">
