@@ -25,7 +25,7 @@
                     <th>
                         <div class="btn-group">
                             @if (request()->is('student/status/baru'))
-                                <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
+                                <a href="{{ route('teachers.verify', $item->id) }}" data-toggle="tooltip"
                                     title="Verifikasi" type="button" class="btn btn-default"> <i class="fas fa-check"></i>
                                 </a>
                             @endif
@@ -34,10 +34,10 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a href="{{ route('students.show', $item->id) }}" class="dropdown-item">Detail</a>
-                                <a class="dropdown-item" href="{{ route('students.edit', $item->id) }}">Edit</a>
+                                <a href="{{ route('teachers.show', $item->id) }}" class="dropdown-item">Detail</a>
+                                <a class="dropdown-item" href="{{ route('teachers.edit', $item->id) }}">Edit</a>
                                 <div class="dropdown-divider"></div>
-                                <form method="POST" action="{{ route('students.destroy', $item->id) }}">
+                                <form method="POST" action="{{ route('teachers.destroy', $item->id) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm"
@@ -51,5 +51,5 @@
         </tbody>
     </table>
     {{-- @include('layouts.partials.confirm') --}}
-    {{-- @include('students.create') --}}
+    {{-- @include('teachers.create') --}}
 @endsection

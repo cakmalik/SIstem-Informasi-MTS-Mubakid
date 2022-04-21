@@ -112,6 +112,8 @@ class TeacherController extends Controller
     */
     public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+        Alert::success('Berhasil','Data berhasil dihapus');
+        return redirect()->back();
     }
 }
