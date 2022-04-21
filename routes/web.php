@@ -55,10 +55,9 @@ Route::group(['middleware'=>['role:admin|super admin']], function ()
         Route::get('/student/verify/{student}','verify')->name('verify');
         Route::get('/student/status/{status}','status')->name('status');
     });
-    Route::resource('students', 'StudentsController', ['except' => ['index', 'show']]);
+    
 });
-Route::resource('students', 'StudentsController', ['only' => ['index', 'show']]);
-
+Route::resource('students', StudentController::class);
 
 Route::controller(ImportExportController::class)->name('import.')->group(function ()
 {
