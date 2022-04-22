@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 
 use App\Models\Student;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -62,6 +63,8 @@ class PDFController extends Controller
     public function kts($id)
     {
         $data = Student::findOrFail($id);
-        return view('pdf.kts', compact('data'));
+        $alm = $data->desa . ', ' . $data->kecamatan . ', ' . $data->kota;
+        $alamat = Str::title($alm);
+        return view('pdf.kts', compact('data','alamat'));
     }
 }

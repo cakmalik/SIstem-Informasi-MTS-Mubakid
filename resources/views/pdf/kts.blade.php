@@ -4,15 +4,15 @@
     <style>
         #left-panel {
             height: auto;
-            width: 25%;
+            width: 23%;
             float: left;
-            /* border: 1px solid salmon; */
+            /* border: 1px solid sa:    ;lmon; */
         }
 
         #right-panel {
             float: right;
-            width: 71%;
-            /* border: 1px solid salmon; */
+            width: 75%;
+            /* border: 1px solid salmo: ;n; */
             height: auto;
             padding-top: 200px;
 
@@ -20,17 +20,17 @@
 
         #fotosiswa {
             margin-top: 550px;
-            margin-left: 200px;
-            /* border: 1px solid salmon; */
-            width: 500px;
+            margin-left: 130px;
+            /* border: 1px solid s: ;almon; */
+            width: 550px;
             height: 700px;
         }
 
         #tgl-panel {
             float: right;
-            width: 31%;
-            /* border: 1px solid salmon; */
-            height: auto;
+            width: 32%;
+            /* border: 1px solid sa: ;lmon; */
+            /* height: auto; */
         }
 
         img {
@@ -101,7 +101,21 @@
         p.tgl {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 50px;
-            margin-top: 100px;
+            margin-top: 0px;
+            padding-left: 22px;
+        }
+
+        .button {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
         }
 
     </style>
@@ -112,11 +126,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"
         integrity="sha512-s/XK4vYVXTGeUSv4bRPOuxSDmDlTedEpMEcAQk0t/FMd9V6ft8iXdwSBxV0eD60c6w/tjotSlKu9J2AAW1ckTA=="
         crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-    <input id="btn-Preview-Image" type="button" value="Preview" />
-    <a id="btn-Convert-Html2Image" href="#">Download</a>
+    <a id="btn-Convert-Html2Image" class="button" href="#">Klik 2X untuk DOWNLOAD</a>
     <br />
     <br>
 
@@ -132,16 +146,16 @@
         @endphp
         <div id="right-panel">
             <p class="nis">{{ $data->nis . ' / ' . $data->nisn }}</p>
-            <p class="nama">{{ $data->nama_lengkap }}</p>
+            <p class="nama">{{ Illuminate\Support\Str::upper($data->nama_lengkap) }}</p>
             <p class="ttl">
-                {{ $data->tempat_lahir . ', ' . Carbon\Carbon::parse($data->tanggal_lahir)->isoFormat('D, D MMMM Y') }}
+                {{ $data->tempat_lahir . ', ' . Carbon\Carbon::parse($data->tanggal_lahir)->isoFormat('D MMMM Y') }}
             </p>
-            <p class="ttl" style="text-transform: uppercase;">
-                {{ $data->desa . ' - ' . $data->kecamatan . ' - ' . $kota[0] }}</p>
+            <p class="ttl">
+                {{ $alamat }}</p>
         </div>
         <div id="tgl-panel">
             <p class="tgl">Lumajang,
-                {{ Carbon\Carbon::parse($data->tanggal_lahir)->isoFormat('D, D MMMM Y') }}</p>
+                {{ Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
         </div>
 
     </div>
@@ -158,16 +172,14 @@
             var element = $("#html-content-holder"); // global variable
             var getCanvas; // global variable
 
-            $("#btn-Preview-Image").on('click', function() {
+            $("#btn-Convert-Html2Image").on('click', function() {
                 html2canvas(element, {
                     onrendered: function(canvas) {
                         $("#previewImage").append(canvas);
                         getCanvas = canvas;
                     }
                 });
-            });
 
-            $("#btn-Convert-Html2Image").on('click', function() {
                 var imgageData = getCanvas.toDataURL("image/png");
                 // Now browser starts downloading it instead of just showing it
                 var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
