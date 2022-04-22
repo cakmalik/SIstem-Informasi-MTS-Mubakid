@@ -11,15 +11,15 @@ class EachStudyGroup extends Component
     public $selectedGrade;
     public $students;
    
-    protected $listeners = [
-        'gradeSelected' => 'handleGradeSelected',
-    ];
+    // protected $listeners = [
+    //     'gradeSelected' => 'handleGradeSelected',
+    // ];
 
-    public function mount()
-    {
-        $students = Student::where('status','aktif')->orderBy('created_at', 'desc')->get();
-        $this->students = $students;  
-    }
+    // public function mount()
+    // {
+    //     $students = Student::where('status','aktif')->orderBy('created_at', 'desc')->get();
+    //     $this->students = $students;  
+    // }
     public function render()
     {   
         $grades = Grade::all();  
@@ -30,10 +30,10 @@ class EachStudyGroup extends Component
         $this->students = Student::where('grade_id',$grade_id)
         ->orderBy('nama_lengkap', 'asc')
         ->get();
-        $this->emitSelf('gradeSelected');
+        // $this->emitSelf('gradeSelected');
     }
-    public function handleGradeSelected()
-    {
-        $this->emit('gradeSelected');
-    }
+    // public function handleGradeSelected()
+    // {
+    //     $this->emit('gradeSelected');
+    // }
 }

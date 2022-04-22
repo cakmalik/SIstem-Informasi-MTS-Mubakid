@@ -38,6 +38,22 @@
                 </a>
             </li>
         </ul>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-arrow-right nav-icon"></i>
+                    <p>Data Mutasi</p>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-arrow-right nav-icon"></i>
+                    <p>Alumni</p>
+                </a>
+            </li>
+        </ul>
     </li>
     <x-menu :href="route('teachers.index')" :icon="'fas fa-building'" :text="'Guru'" :active="request()->is('teachers')" />
     <x-menu :href="route('pay.list', 'pendaftaran')" :icon="'fas fa-list'" :text="'Daftar pembayaran'" :active="request()->is('payment')" />
