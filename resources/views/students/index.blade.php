@@ -3,17 +3,26 @@
     <x-datatables />
 
     <div class="mb-2 d-flex justify-content-between">
-        <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-default">
-            <i class="fas fa-plus"></i> Tambah
-        </button>
-        <div>
-            <a href="{{ route('students.status', 'baru') }}"
-                class="mx-1 btn btn-flat @if (Request::segment(3) == 'baru') btn-info @else btn-outline-info @endif btn-sm">Baru</a>
-            <a href="{{ route('students.status', 'aktif') }}"
-                class="btn btn-flat @if (Request::segment(3) == 'aktif') btn-info @else btn-outline-info @endif btn-sm">Aktif</a>
-        </div>
-
-
+        @if (Request::segment(3) == 'lulus')
+            <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal"
+                data-target="#modal-default">
+                <i class="fas fa-plus"></i> Tambah Alumni
+            </button>
+        @else
+            <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal"
+                data-target="#modal-default">
+                <i class="fas fa-plus"></i> Tambah
+            </button>
+        @endif
+        @if (Request::segment(3) == 'lulus')
+        @else
+            <div>
+                <a href="{{ route('students.status', 'baru') }}"
+                    class="mx-1 btn btn-flat @if (Request::segment(3) == 'baru') btn-info @else btn-outline-info @endif btn-sm">Baru</a>
+                <a href="{{ route('students.status', 'aktif') }}"
+                    class="btn btn-flat @if (Request::segment(3) == 'aktif') btn-info @else btn-outline-info @endif btn-sm">Aktif</a>
+            </div>
+        @endif
     </div>
     <table id="datatable" class="display" style="width:100%">
         <thead>
@@ -27,7 +36,11 @@
                 @endif
                 <th>Jk</th>
                 <th>No Hp</th>
-                <th>Terdaftar</th>
+                @if (Request::segment(3) == 'lulus')
+                    <th>Tahun Lulus</th>
+                @else
+                    <th>Terdaftar</th>
+                @endif
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -44,7 +57,11 @@
                     @endif
                     <th>{{ $item->jenis_kelamin }}</th>
                     <th>{{ $item->no_hp }}</th>
-                    <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
+                    @if (Request::segment(3) == 'lulus')
+                        <th>{{ Carbon\Carbon::parse($item->updated_at)->isoFormat('Y') }}</th>
+                    @else
+                        <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
+                    @endif
                     <th>
                         <div class="btn-group">
                             @if ($item->status == 'baru')

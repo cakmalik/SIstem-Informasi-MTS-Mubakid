@@ -38,26 +38,12 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-arrow-right nav-icon"></i>
-                    <p>Data Mutasi</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-arrow-right nav-icon"></i>
-                    <p>Alumni</p>
-                </a>
-            </li>
-        </ul>
     </li>
+    <x-menu :href="route('students.status', 'lulus')" :icon="'fas fa-graduation-cap'" :text="'Alumni'" :active="request()->is('student/status/lulus')" />
     <x-menu :href="route('teachers.index')" :icon="'fas fa-building'" :text="'Guru'" :active="request()->is('teachers')" />
     <x-menu :href="route('pay.list', 'pendaftaran')" :icon="'fas fa-list'" :text="'Daftar pembayaran'" :active="request()->is('payment')" />
     <x-menu :href="route('grades.index')" :icon="'fas fa-building'" :text="'Kelola kelas'" :active="request()->is('grades')" />
+    <x-menu :href="route('home')" :icon="'fas fa-sync-alt'" :text="'Mutasi'" :active="request()->is('mutasi')" />
     <x-menu :href="route('import.index')" :icon="'fas fa-solid fa-upload'" :text="'Import'" :active="request()->is('import')" />
     <x-menu :href="route('users.index')" :icon="'fas fa-user'" :text="'Kelola pengguna'" :active="request()->is('users')" />
 @endhasrole
