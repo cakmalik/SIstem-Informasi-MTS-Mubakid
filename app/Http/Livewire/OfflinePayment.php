@@ -20,4 +20,9 @@ class OfflinePayment extends Component
         Transaction::find($id)->update(['status'=>'paid']);
         Alert::success('Success','Pembayaran Berhasil');
     }
+    public function belumbayar($id)
+    {
+        Transaction::find($id)->update(['status'=>'unpaid']);
+        Alert::success('Success','Pembayaran Berhasil');
+    }
 }

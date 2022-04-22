@@ -32,8 +32,12 @@
                     <td>{{ $item->bill_type->name }}</td>
                     <td>{{ Carbon\Carbon::parse($item->created_at)->isoFormat('D MMM Y H:m') }}</td>
                     <td>
-                        <button wire:click="bayar({{ $item->id }})" class="btn badge bg-primary">Bayar</button>
-                        {{-- <a href="{{ route('students.show', $item->user_id) }}">Cek siswa</a> --}}
+                        @if ($item->status == 'unpaid')
+                            <button wire:click="bayar({{ $item->id }})" class="btn badge bg-primary">Bayar</button>
+                        @else
+                            <button wire:click="belumbayar({{ $item->id }})" class="btn badge bg-primary">Ubah ke
+                                Belum</button>
+                        @endif
                     </td>
                 </tr>
             @endforeach
