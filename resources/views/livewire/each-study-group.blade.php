@@ -1,6 +1,8 @@
 <div>
-    <x-datatables />
-    {{-- {{ $pesan }} --}}
+    {{-- <div wire:loading>
+        Loading...
+    </div> --}}
+
     <select class="form-control" wire:model='selectedGrade'>
         <option value="">Pilih Kelas</option>
         @foreach ($grades as $grade)
@@ -11,7 +13,7 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nama</th>gi
+                <th>Nama</th>
                 <th>Kota</th>
                 <th>Kelas</th>
                 <th>Aksi</th>
@@ -19,7 +21,7 @@
         </thead>
         <tbody>
             @if (!is_null($students))
-                @foreach ($students as $student)
+                @forelse ($students as $student)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $student->nama_lengkap }}</td>
@@ -31,7 +33,11 @@
                                 class="btn btn-info btn-sm btn-flat">Detail</a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center">Tidak ada data</td>
+                    </tr>
+                @endforelse
             @endif
         </tbody>
     </table>

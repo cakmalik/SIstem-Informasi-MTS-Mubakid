@@ -52,6 +52,8 @@ Route::group(['middleware'=>['role:admin|super admin']], function ()
 {
     Route::controller(StudentController::class)->name('students.')->group(function ()
     {
+        Route::post('/student/mutasikan','mutasikan')->name('mutasikan');
+        Route::get('/student/luluskan/{student}','luluskan')->name('luluskan');
         Route::get('/student/verify/{student}','verify')->name('verify');
         Route::get('/student/status/{status}','status')->name('status');
     });

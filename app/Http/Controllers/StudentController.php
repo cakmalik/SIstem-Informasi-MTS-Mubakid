@@ -8,6 +8,7 @@ use App\Helpers\Malik;
 use App\Models\Student;
 use App\Models\BillType;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -141,13 +142,6 @@ class StudentController extends Controller
             return redirect()->route('students.index');
         }
     }
-    
-    /**
-    * Display the specified resource.
-    *
-    * @param  \App\Models\Student  $student
-    * @return \Illuminate\Http\Response
-    */
     public function show(Student $student)
     {
         $student = Student::findOrFail($student->id);
@@ -157,7 +151,6 @@ class StudentController extends Controller
         $prov = $malik->getProvinsi();
         return view('students.edit',compact('student','detail_mode','kota','prov'));
     }
-    
     public function edit(Student $student)
     {
         $malik=  new Malik();
@@ -166,14 +159,12 @@ class StudentController extends Controller
         $detail_mode = false;
         return view('students.edit', compact('student','kota','prov', 'detail_mode'));
     }
-    
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student->update($request->all());
         Alert::success('Selamat', 'Data berhasil diubah');
         return redirect()->route('students.index');
     }
-    
     public function destroy(Student $student)
     {
         $student->delete();
@@ -243,9 +234,19 @@ class StudentController extends Controller
             return view('students.index',compact('collection','status','nominal','kota','prov'));
         }
     }
-    
     public function kuotaKelas($grade_id)
     {
         return Grade::findOrFail($grade_id)->qty;
+    }
+    public function luluskan(Student $student)
+    {
+        $student->update(['status'=>'lulus']);
+        Alert::success('Selamat', 'Siswa berhasil lulus');
+        return back();
+    }
+    public function mutasikan(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
     }
 }

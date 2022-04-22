@@ -405,7 +405,6 @@
                                 placeholder="no_kks_kps" @if ($detail_mode) readonly @endif>
                         </div>
                     </div>
-
                     <div class="col-md">
                         <div class="form-group">
                             <label for="no_kip">No KIP</label>
@@ -436,6 +435,9 @@
                     </div>
                 @endif
             </div>
+            @if ($student->status == 'aktif')
+                @include('students.mutasi')
+            @endif
         </div>
     </form>
 @endsection

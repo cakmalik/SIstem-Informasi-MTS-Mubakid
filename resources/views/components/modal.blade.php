@@ -10,7 +10,7 @@
                 </div>
             @endif
             <div class="modal-body">
-                {{ $body }}
+                {{ $body ?? '' }}
             </div>
             <div class="modal-footer justify-content-between">
                 {{ $footer ?? '' }}
