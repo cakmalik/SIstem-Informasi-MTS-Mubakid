@@ -5,6 +5,16 @@
             <p class="login-box-msg">Silahkan Login dahulu</p>
             <form action="{{ route('login') }}" method="post">
                 @csrf
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
                     <div class="input-group-append">

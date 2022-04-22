@@ -53,6 +53,7 @@
             {{-- IMPORT EXPORT GURU --}}
             <div class="col-md-6">
                 <div class="card">
+                    @include('comingsoon')
                     <div class="card-header">Guru</div>
                     <div class="card-body">
                         <div class="d-flex justify-content-around">

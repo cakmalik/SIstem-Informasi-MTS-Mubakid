@@ -62,16 +62,16 @@
                     @enderror
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    {{-- <div class="col-8">
                         <div class="icheck-success">
                             <input type="checkbox" id="remember">
                             <label for="remember">
                                 Remember Me
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col">
                         <button type="submit" class="btn btn-success btn-block">Mendaftar</button>
                     </div>
                     <!-- /.col -->

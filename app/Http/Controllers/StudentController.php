@@ -232,13 +232,18 @@ class StudentController extends Controller
     }
     public function status($status)
     {
-        $collection = Student::where('status',$status)->get();
-        $nominal = BillType::where('name','pendaftaran')->first()->amount;
-        $malik=  new Malik();
-        $kota = $malik->getKota();
-        $prov = $malik->getProvinsi();
-        return view('students.index',compact('collection','status','nominal','kota','prov'));
+        if($status=='perkelas'){
+            return view('students.perkelas');
+        }else{
+            $collection = Student::where('status',$status)->get();
+            $nominal = BillType::where('name','pendaftaran')->first()->amount;
+            $malik=  new Malik();
+            $kota = $malik->getKota();
+            $prov = $malik->getProvinsi();
+            return view('students.index',compact('collection','status','nominal','kota','prov'));
+        }
     }
+    
     public function kuotaKelas($grade_id)
     {
         return Grade::findOrFail($grade_id)->qty;

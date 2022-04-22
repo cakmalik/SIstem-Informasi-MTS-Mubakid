@@ -20,7 +20,11 @@
             <tr>
                 <th>#</th>
                 <th>Nama</th>
-                <th>Kota</th>
+                @if (Request::segment(3) == 'aktif')
+                    <th>Kelas</th>
+                @else
+                    <th>Kota</th>
+                @endif
                 <th>Jk</th>
                 <th>No Hp</th>
                 <th>Terdaftar</th>
@@ -33,7 +37,11 @@
                 <tr>
                     <th>{{ $loop->iteration }}</th>
                     <th>{{ $item->nama_lengkap }}</th>
-                    <th>{{ $item->kota }}</th>
+                    @if (Request::segment(3) == 'aktif')
+                        <th>{{ $item->grade->name }}</th>
+                    @else
+                        <th>{{ $item->kota }}</th>
+                    @endif
                     <th>{{ $item->jenis_kelamin }}</th>
                     <th>{{ $item->no_hp }}</th>
                     <th>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</th>
