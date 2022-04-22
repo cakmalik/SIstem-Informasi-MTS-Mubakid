@@ -17,7 +17,7 @@
         <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('students.status', 'baru') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Siswa Baru</p>
                 </a>
             </li>
@@ -25,7 +25,7 @@
         <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('students.status', 'aktif') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Siswa Aktif</p>
                 </a>
             </li>
@@ -33,7 +33,7 @@
         <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('students.status', 'perkelas') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Siswa Per Kelas</p>
                 </a>
             </li>
@@ -57,49 +57,49 @@
         <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('teachers.show', Auth::user()->teacher->id) }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Data diri</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index2.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Riwayat pendidikan</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Kompetensi</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Pelatihan</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Pengalaman kerja</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Riwayat mengajar</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Organisasi</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-arrow-right nav-icon"></i>
                     <p>Tambahan</p>
                 </a>
             </li>

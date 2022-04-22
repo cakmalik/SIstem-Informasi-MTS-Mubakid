@@ -11,7 +11,7 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nama</th>
+                <th>Nama</th>gi
                 <th>Kota</th>
                 <th>Kelas</th>
                 <th>Aksi</th>
