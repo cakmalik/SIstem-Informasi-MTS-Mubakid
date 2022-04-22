@@ -25,7 +25,6 @@ class UpdateGradeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'wali_kelas' => 'required|integer',
             'qty'=>'required|integer',
             'description'=>'required|string',
         ];
