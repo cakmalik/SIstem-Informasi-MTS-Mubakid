@@ -65,7 +65,8 @@ class GradeController extends Controller
      */
     public function edit(Grade $grade)
     {
-        //
+        $teachers = Teacher::all();
+        return view('grades.edit', compact('grade', 'teachers'));
     }
 
     /**
@@ -77,7 +78,9 @@ class GradeController extends Controller
      */
     public function update(UpdateGradeRequest $request, Grade $grade)
     {
-        //
+        $grade->update($request->all());
+        Alert::success('Success', 'Grade has been updated');
+        return redirect()->route('grades.index');
     }
 
     /**

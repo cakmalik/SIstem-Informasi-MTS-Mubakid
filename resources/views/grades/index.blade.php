@@ -73,6 +73,8 @@
                             <form action="{{ route('grades.destroy', $grade->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
+                                <a class="btn btn-flat btn-sm btn-info" href="{{ route('grades.edit', $grade->id) }}"> <i
+                                        class="fas fa-edit"></i> </a>
                                 <button type="submit" class="btn btn-sm btn-danger show_confirm" data-toggle="tooltip"
                                     title='Delete'> <i class="fas fa-trash"></i></button>
                             </form>

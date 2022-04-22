@@ -13,7 +13,7 @@ class UpdateGradeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateGradeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'wali_kelas' => 'required|integer',
+            'qty'=>'required|integer',
+            'description'=>'required|string',
         ];
     }
 }
