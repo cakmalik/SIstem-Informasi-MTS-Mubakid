@@ -51,19 +51,22 @@
                                 <a href="{{ route('students.verify', $item->id) }}" data-toggle="tooltip"
                                     title="Verifikasi" type="button" class="btn btn-success"> <i class="fas fa-check"></i>
                                 </a>
+                            @else
+                                <a href="{{ route('students.show', $item->id) }}" class="btn btn-info">Detail</a>
                             @endif
                             <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split"
                                 data-toggle="dropdown" aria-expanded="false">
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a href="{{ route('students.show', $item->id) }}" class="dropdown-item">Detail</a>
                                 <a class="dropdown-item" href="{{ route('students.edit', $item->id) }}">Edit</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" target="_blank"
                                     href="{{ route('pdf.biodata', $item->id) }}">Biodata</a>
                                 <a class="dropdown-item" target="_blank"
                                     href="{{ route('pdf.mou', $item->id) }}">MoU</a>
-                                {{-- <a class="dropdown-item" href="{{ route('pdf.biodata') }}">Cetak Kts</a> --}}
+                                <a class="dropdown-item" target="_blank"
+                                    href="{{ route('pdf.kts', $item->id) }}">Kts</a>
                                 <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('students.destroy', $item->id) }}">
                                     @csrf

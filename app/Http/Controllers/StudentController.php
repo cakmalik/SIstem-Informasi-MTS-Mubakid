@@ -161,7 +161,14 @@ class StudentController extends Controller
     }
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->update($request->all());
+        $data =  $request->all();
+        if ($file = $request->file('foto_siswa')) {
+            $data['foto_siswa']= $this->storeImgSiswa($file);
+        }
+        if ($file = $request->file('foto_ortu')) {
+            $data['foto_ortu']= $this->storeImgWali($file);
+        }
+        $student->update($data);
         Alert::success('Selamat', 'Data berhasil diubah');
         return redirect()->route('students.index');
     }

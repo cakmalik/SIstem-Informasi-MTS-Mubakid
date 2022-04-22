@@ -21,15 +21,15 @@
             <div class="card p-4">
                 <div class="row mb-3 d-flex justify-content-around">
 
-                    @if ($student->foto_wali != null)
+                    @if ($student->foto_siswa != null)
                         <img src="{{ asset('storage/foto_siswa/' . $student->foto_siswa) }}"
                             style="width: 300px; height:auto">
                     @else
                         <img src="{{ asset('MTS2/default.png') }}">
                     @endif
 
-                    @if ($student->foto_wali != null)
-                        <img src="{{ asset('storage/foto_wali/' . $student->foto_wali) }}"
+                    @if ($student->foto_ortu != null)
+                        <img src="{{ asset('storage/foto_wali/' . $student->foto_ortu) }}"
                             style="width: 300px; height:auto">
                     @else
                         <img src="{{ asset('MTS2/default.png') }}">

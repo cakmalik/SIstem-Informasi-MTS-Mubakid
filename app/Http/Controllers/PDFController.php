@@ -58,4 +58,10 @@ class PDFController extends Controller
             }
             
         }
+
+    public function kts($id)
+    {
+        $data = Student::findOrFail($id);
+        return view('pdf.kts', compact('data'));
     }
+}

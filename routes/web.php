@@ -29,6 +29,7 @@ Route::controller(PDFController::class)->name('pdf.')->group(function ()
 {
     Route::get('/pdf/biodata/{id}','biodata')->name('biodata');
     Route::get('/pdf/mou/{id}','mou')->name('mou');
+    Route::get('/pdf/kts/{id}','kts')->name('kts');
 });
 
 // NOTE:PAYMENT
