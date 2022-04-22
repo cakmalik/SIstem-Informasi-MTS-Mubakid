@@ -5,7 +5,7 @@
     <div class="mb-2 d-flex justify-content-between">
         @if (Request::segment(3) == 'lulus')
             <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal"
-                data-target="#modal-default">
+                data-target="#modal-alumni">
                 <i class="fas fa-plus"></i> Tambah Alumni
             </button>
         @else

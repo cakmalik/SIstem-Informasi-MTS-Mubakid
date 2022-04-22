@@ -2,7 +2,7 @@ Jangan lupa :
 
 -   bisa batalkan pembayaran lokal (done)
 -   kts (done)
--   alumni (done)
+-   alumni index(done)
 -   edit kelas (done)
 
 -   data guru relasi dan tambahannya
@@ -10,6 +10,7 @@ Jangan lupa :
 -   dashboard
 -   fix kan hak akses dan permission
 -   perjelas link untuk mengisi data guru
--   mutasi & tambah alumni
+-   mutasi
+-   alumni tambah, edit, hapus
 -   mutasi benerin. masih ikut edit
 -   pindah kelas
