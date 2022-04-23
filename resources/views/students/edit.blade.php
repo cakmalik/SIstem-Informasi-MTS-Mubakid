@@ -416,7 +416,8 @@
                     <div class="col-md">
                         <div class="form-group">
                             <label for="kelas">Kelas </label>
-                            <select name="grade_id" id="kelas" @if ($detail_mode) readonly @endif>
+                            <select name="grade_id" class="form-control" id="kelas"
+                                @if ($detail_mode) readonly @endif>
                                 <option value="{{ $student->grade->id }}">{{ $student->grade->name }}</option>
                                 @foreach ($grades as $grade)
                                     <option value="{{ $grade->id }}">{{ $grade->name }}</option>

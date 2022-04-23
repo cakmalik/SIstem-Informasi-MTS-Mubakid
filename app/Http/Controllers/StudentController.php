@@ -149,7 +149,8 @@ class StudentController extends Controller
         $malik=  new Malik();
         $kota = $malik->getKota();
         $prov = $malik->getProvinsi();
-        return view('students.edit',compact('student','detail_mode','kota','prov'));
+        $grades = Grade::all();
+        return view('students.edit',compact('student','detail_mode','kota','prov','grades'));
     }
     public function edit(Student $student)
     {
@@ -171,7 +172,7 @@ class StudentController extends Controller
         }
         $student->update($data);
         Alert::success('Selamat', 'Data berhasil diubah');
-        return redirect()->route('students.index');
+        return redirect()->back();
     }
     public function destroy(Student $student)
     {
@@ -179,7 +180,7 @@ class StudentController extends Controller
         Alert::success('Baik', 'Semoga Kamu baik baik saja');
         return back();
     }
-    public function storeImgSiswa($file)
+    public function storeImgSiswa($file)    
     {
         $path = 'foto_siswa/';
         $fileName_santri   = time() . $file->getClientOriginalName();
