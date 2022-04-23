@@ -157,7 +157,8 @@ class StudentController extends Controller
         $kota = $malik->getKota();
         $prov = $malik->getProvinsi();
         $detail_mode = false;
-        return view('students.edit', compact('student','kota','prov', 'detail_mode'));
+        $grades = Grade::all();
+        return view('students.edit', compact('student','kota','prov', 'detail_mode','grades'));
     }
     public function update(UpdateStudentRequest $request, Student $student)
     {
