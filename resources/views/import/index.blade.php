@@ -39,19 +39,20 @@
                 </div>
                 @csrf
                 <x-modal id="modal_import_students" :modalHeader="false">
-                    <form action="{{ route('import.students') }}" enctype="multipart/form-data" method="POST">
-                        <x-slot name="body">
+                    <x-slot name="body">
+                        <form action="{{ route('import.students') }}" enctype="multipart/form-data" method="POST">
+                            @csrf
                             <input type="file" name="file_students" id="file">
-                        </x-slot>
-                        <x-slot name="footer">
-                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-info btn-sm">Tambah</button>
-                        </x-slot>
+                    </x-slot>
+                    <x-slot name="footer">
+                        {{-- <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button> --}}
+                    </x-slot>
                     </form>
                 </x-modal>
             </div>
             {{-- IMPORT EXPORT GURU --}}
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="card">
                     @include('comingsoon')
                     <div class="card-header">Guru</div>
@@ -68,7 +69,7 @@
                             <a href="{{ route('export.students') }}" type="button" class="btn btn-info btn-sm btn-flat">
                                 <i class="fas fa-solid fa-download"></i> Export
                             </a>
-                        </div>
+                        </div>      
                     </div>
                 </div>
                 @csrf
@@ -83,7 +84,7 @@
                         </x-slot>
                     </form>
                 </x-modal>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

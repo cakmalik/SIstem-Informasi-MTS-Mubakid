@@ -4,8 +4,7 @@
 
     <div class="mb-2 d-flex justify-content-between">
         @if (Request::segment(3) == 'lulus')
-            <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal"
-                data-target="#modal-alumni">
+            <button type="button" class="btn btn-outline-info btn-sm btn-flat" data-toggle="modal" data-target="#modal-alumni">
                 <i class="fas fa-plus"></i> Tambah Alumni
             </button>
         @else
@@ -51,7 +50,7 @@
                     <th>{{ $loop->iteration }}</th>
                     <th>{{ $item->nama_lengkap }}</th>
                     @if (Request::segment(3) == 'aktif')
-                        <th>{{ $item->grade->name }}</th>
+                        <th>{{ $item->grade->name ?? '' }}</th>
                     @else
                         <th>{{ $item->kota }}</th>
                     @endif
@@ -80,10 +79,8 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" target="_blank"
                                     href="{{ route('pdf.biodata', $item->id) }}">Biodata</a>
-                                <a class="dropdown-item" target="_blank"
-                                    href="{{ route('pdf.mou', $item->id) }}">MoU</a>
-                                <a class="dropdown-item" target="_blank"
-                                    href="{{ route('pdf.kts', $item->id) }}">Kts</a>
+                                <a class="dropdown-item" target="_blank" href="{{ route('pdf.mou', $item->id) }}">MoU</a>
+                                <a class="dropdown-item" target="_blank" href="{{ route('pdf.kts', $item->id) }}">Kts</a>
                                 <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('students.destroy', $item->id) }}">
                                     @csrf

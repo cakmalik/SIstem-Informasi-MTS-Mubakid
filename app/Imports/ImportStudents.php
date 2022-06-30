@@ -18,7 +18,7 @@ class ImportStudents implements ToModel, WithHeadingRow, WithValidation, SkipsOn
     public function model(array $row)
     {
         return new Student([
-
+            'id'=>$row['id'],
             'user_id'=>$row['user_id'],
             'nis'=>$row['nis'],
             'nama_lengkap'=>$row['nama_lengkap'],
@@ -66,6 +66,8 @@ class ImportStudents implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             'no_pkh'=>$row['no_pkh'],
             'no_kks_kps'=>$row['no_kks_kps'],
             'no_kip'=>$row['no_kip'],
+            'foto_siswa'=>$row['foto_siswa'],
+            'foto_ortu'=>$row['foto_ortu'],
             
             'status'=>$row['status'],
         ]);
